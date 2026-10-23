@@ -1,0 +1,645 @@
+ticker,filing_date,form,items,items_description,accession_number
+AAPL,2021-01-05,8-K,5.02,Executive or director change,0001193125-21-001982
+AAPL,2021-01-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-21-000009
+AAPL,2021-02-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-032394
+AAPL,2021-02-24,8-K,5.07,Shareholder vote results,0001193125-21-054710
+AAPL,2021-04-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-21-000055
+AAPL,2021-07-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-21-000063
+AAPL,2021-08-05,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-237787
+AAPL,2021-10-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-21-000104
+AAPL,2021-11-12,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001193125-21-328151
+AAPL,2022-01-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-22-000006
+AAPL,2022-03-04,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0001193125-22-066169
+AAPL,2022-04-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-22-000058
+AAPL,2022-07-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-22-000069
+AAPL,2022-08-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-214914
+AAPL,2022-08-19,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001193125-22-225365
+AAPL,2022-10-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-22-000107
+AAPL,2022-11-07,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-22-278435
+AAPL,2023-02-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-23-000005
+AAPL,2023-03-10,8-K,5.07,Shareholder vote results,0001140361-23-011192
+AAPL,2023-05-04,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-23-000063
+AAPL,2023-05-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001140361-23-023909
+AAPL,2023-08-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-23-000075
+AAPL,2023-11-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-23-000104
+AAPL,2024-02-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-24-000005
+AAPL,2024-02-28,8-K,5.07,Shareholder vote results,0001140361-24-010155
+AAPL,2024-05-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-24-000067
+AAPL,2024-05-03,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001140361-24-024352
+AAPL,2024-08-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-24-000080
+AAPL,2024-08-23,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001140361-24-038403
+AAPL,2024-08-26,8-K,5.02,Executive or director change,0001140361-24-038601
+AAPL,2024-09-10,8-K,7.01,Regulation FD disclosure,0001140361-24-040659
+AAPL,2024-10-31,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-24-000120
+AAPL,2025-01-03,8-K,5.02,Executive or director change,0001140361-25-000228
+AAPL,2025-01-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-25-000007
+AAPL,2025-02-25,8-K,5.07,Shareholder vote results,0001140361-25-005876
+AAPL,2025-05-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-25-000055
+AAPL,2025-05-12,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001140361-25-018400
+AAPL,2025-07-09,8-K,5.02,Executive or director change,0001140361-25-025275
+AAPL,2025-07-25,8-K,5.02,Executive or director change,0001140361-25-027340
+AAPL,2025-07-31,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-25-000071
+AAPL,2025-10-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000320193-25-000077
+AAPL,2025-12-05,8-K,5.02,Executive or director change,0001140361-25-044561
+AMZN,2021-01-27,8-K,5.02,Executive or director change,0001193125-21-018066
+AMZN,2021-02-02,8-K,"2.02,5.02,9.01",Results of operations (earnings); Executive or director change; Financial statements and exhibits,0001018724-21-000002
+AMZN,2021-04-15,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001104659-21-050346
+AMZN,2021-04-29,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-21-000008
+AMZN,2021-05-12,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-159084
+AMZN,2021-05-28,8-K,5.07,Shareholder vote results,0001018724-21-000012
+AMZN,2021-07-02,8-K,5.02,Executive or director change,0001018724-21-000016
+AMZN,2021-07-29,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-21-000018
+AMZN,2021-09-20,8-K,5.02,Executive or director change,0001018724-21-000022
+AMZN,2021-10-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-21-000026
+AMZN,2021-11-12,8-K,5.02,Executive or director change,0001018724-21-000030
+AMZN,2022-02-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-22-000002
+AMZN,2022-03-09,8-K,8.01,Other events,0001018724-22-000009
+AMZN,2022-04-13,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-104336
+AMZN,2022-04-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001104659-22-045579
+AMZN,2022-04-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-22-000011
+AMZN,2022-05-27,8-K,"5.03,5.07,9.01",Other; Shareholder vote results; Financial statements and exhibits,0001104659-22-065872
+AMZN,2022-06-03,8-K,5.02,Executive or director change,0001018724-22-000015
+AMZN,2022-07-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-22-000017
+AMZN,2022-10-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-22-000021
+AMZN,2022-11-18,8-K,"1.01,2.03,9.01",Entry into a material agreement; New financial obligation; Financial statements and exhibits,0001193125-22-289041
+AMZN,2022-12-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-296602
+AMZN,2023-01-03,8-K,"1.01,2.03,9.01",Entry into a material agreement; New financial obligation; Financial statements and exhibits,0001193125-23-000849
+AMZN,2023-01-06,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001193125-23-003621
+AMZN,2023-02-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-23-000002
+AMZN,2023-04-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001104659-23-044715
+AMZN,2023-04-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-23-000006
+AMZN,2023-05-26,8-K,5.07,Shareholder vote results,0001104659-23-065457
+AMZN,2023-08-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-23-000010
+AMZN,2023-09-13,8-K,5.02,Executive or director change,0001018724-23-000014
+AMZN,2023-10-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-23-000016
+AMZN,2023-11-01,8-K,"1.01,1.02,2.03,9.01",Entry into a material agreement; Termination of a material agreement; New financial obligation; Financial statements and exhibits,0001104659-23-113444
+AMZN,2024-02-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-24-000006
+AMZN,2024-04-11,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001104659-24-045915
+AMZN,2024-04-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-24-000081
+AMZN,2024-05-03,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001104659-24-057026
+AMZN,2024-05-14,8-K,5.02,Executive or director change,0001104659-24-061143
+AMZN,2024-05-24,8-K,5.07,Shareholder vote results,0001104659-24-065117
+AMZN,2024-08-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-24-000128
+AMZN,2024-10-31,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-24-000158
+AMZN,2025-02-06,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-25-000002
+AMZN,2025-04-10,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001104659-25-033450
+AMZN,2025-05-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-25-000034
+AMZN,2025-05-22,8-K,5.07,Shareholder vote results,0001104659-25-052014
+AMZN,2025-07-31,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-25-000084
+AMZN,2025-10-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001018724-25-000121
+AMZN,2025-11-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001104659-25-114647
+JNJ,2021-01-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-21-000006
+JNJ,2021-04-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-21-000024
+JNJ,2021-04-26,8-K,5.07,Shareholder vote results,0000200406-21-000030
+JNJ,2021-06-01,8-K,8.01,Other events,0000200406-21-000040
+JNJ,2021-07-21,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-21-000053
+JNJ,2021-08-20,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000200406-21-000061
+JNJ,2021-10-12,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000200406-21-000063
+JNJ,2021-10-19,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0000200406-21-000067
+JNJ,2021-11-15,8-K,8.01,Other events,0000200406-21-000072
+JNJ,2022-01-06,8-K,5.02,Executive or director change,0000200406-22-000004
+JNJ,2022-01-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-22-000012
+JNJ,2022-02-02,8-K,8.01,Other events,0000200406-22-000015
+JNJ,2022-02-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000200406-22-000017
+JNJ,2022-04-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-22-000038
+JNJ,2022-04-29,8-K,"5.02,5.07",Executive or director change; Shareholder vote results,0000200406-22-000047
+JNJ,2022-07-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-22-000063
+JNJ,2022-09-14,8-K,8.01,Other events,0000200406-22-000076
+JNJ,2022-10-18,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-22-000081
+JNJ,2022-11-01,8-K,"1.01,7.01,9.01",Entry into a material agreement; Regulation FD disclosure; Financial statements and exhibits,0001193125-22-274491
+JNJ,2022-12-01,8-K,5.02,Executive or director change,0000200406-22-000089
+JNJ,2022-12-22,8-K,"1.01,2.01,7.01,9.01",Entry into a material agreement; Completion of acquisition or disposition; Regulation FD disclosure; Financial statements and exhibits,0001193125-22-311072
+JNJ,2023-01-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-23-000005
+JNJ,2023-02-14,8-K,5.02,Executive or director change,0000200406-23-000008
+JNJ,2023-04-03,8-K,5.02,Executive or director change,0000200406-23-000032
+JNJ,2023-04-04,8-K,7.01,Regulation FD disclosure,0000200406-23-000037
+JNJ,2023-04-18,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0000200406-23-000043
+JNJ,2023-05-01,8-K,"5.02,5.07",Executive or director change; Shareholder vote results,0000200406-23-000059
+JNJ,2023-05-08,8-K,"1.01,9.01",Entry into a material agreement; Financial statements and exhibits,0001193125-23-138287
+JNJ,2023-07-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-23-000073
+JNJ,2023-07-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001628280-23-025388
+JNJ,2023-07-28,8-K,"5.04,9.01",Other; Financial statements and exhibits,0001628280-23-026095
+JNJ,2023-08-25,8-K,2.01,Completion of acquisition or disposition,0000200406-23-000086
+JNJ,2023-08-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-23-000091
+JNJ,2023-10-17,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-23-000094
+JNJ,2023-10-23,8-K,5.02,Executive or director change,0000200406-23-000096
+JNJ,2023-11-27,8-K,5.02,Executive or director change,0000200406-23-000105
+JNJ,2023-11-30,8-K,8.01,Other events,0000200406-23-000109
+JNJ,2023-12-05,8-K,5.02,Executive or director change,0000200406-23-000115
+JNJ,2023-12-05,8-K,8.01,Other events,0000200406-23-000112
+JNJ,2024-01-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-24-000004
+JNJ,2024-04-16,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0000200406-24-000031
+JNJ,2024-04-29,8-K,"5.03,5.07,9.01",Other; Shareholder vote results; Financial statements and exhibits,0000200406-24-000043
+JNJ,2024-05-01,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0000200406-24-000048
+JNJ,2024-05-17,8-K,8.01,Other events,0000200406-24-000053
+JNJ,2024-05-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-142828
+JNJ,2024-07-17,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-24-000071
+JNJ,2024-08-26,8-K,5.02,Executive or director change,0000200406-24-000079
+JNJ,2024-09-10,8-K,5.02,Executive or director change,0000200406-24-000081
+JNJ,2024-09-20,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000200406-24-000083
+JNJ,2024-10-15,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-24-000088
+JNJ,2025-01-22,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-25-000003
+JNJ,2025-02-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-030851
+JNJ,2025-02-26,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-036773
+JNJ,2025-04-03,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000200406-25-000106
+JNJ,2025-04-15,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0000200406-25-000110
+JNJ,2025-04-30,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0000200406-25-000141
+JNJ,2025-06-10,8-K,5.02,Executive or director change,0000200406-25-000152
+JNJ,2025-07-16,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000200406-25-000170
+JNJ,2025-09-09,8-K,5.02,Executive or director change,0000200406-25-000190
+JNJ,2025-10-14,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0000200406-25-000201
+JPM,2021-01-15,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-21-000073
+JPM,2021-01-15,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-21-000071
+JPM,2021-01-21,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-21-000123
+JPM,2021-02-04,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-028835
+JPM,2021-02-16,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-044878
+JPM,2021-02-22,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001193125-21-050847
+JPM,2021-03-05,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-071470
+JPM,2021-03-16,8-K,"5.03,9.01",Other; Financial statements and exhibits,0000019617-21-000243
+JPM,2021-03-16,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-082826
+JPM,2021-03-17,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-21-084083
+JPM,2021-04-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-21-000283
+JPM,2021-04-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-21-000281
+JPM,2021-04-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-126705
+JPM,2021-04-30,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-145290
+JPM,2021-05-12,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-21-159144
+JPM,2021-05-18,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001193125-21-164789
+JPM,2021-05-20,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-21-167776
+JPM,2021-05-21,8-K,"5.07,9.01",Shareholder vote results; Financial statements and exhibits,0000019617-21-000343
+JPM,2021-06-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-178644
+JPM,2021-06-23,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-197271
+JPM,2021-06-28,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-21-000354
+JPM,2021-06-28,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-21-000352
+JPM,2021-07-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-21-000365
+JPM,2021-07-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-21-000363
+JPM,2021-07-20,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-21-000371
+JPM,2021-07-29,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-21-229188
+JPM,2021-08-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-241817
+JPM,2021-09-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-279424
+JPM,2021-10-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-21-000448
+JPM,2021-10-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-21-000446
+JPM,2021-11-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-323115
+JPM,2021-12-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-353966
+JPM,2021-12-15,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-21-000534
+JPM,2021-12-15,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-21-000531
+JPM,2021-12-17,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-360098
+JPM,2022-01-03,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-000220
+JPM,2022-01-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000081
+JPM,2022-01-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-22-000079
+JPM,2022-01-20,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-22-000136
+JPM,2022-01-25,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-017078
+JPM,2022-02-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-052112
+JPM,2022-04-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000315
+JPM,2022-04-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-22-000313
+JPM,2022-04-26,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-120273
+JPM,2022-05-06,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950103-22-008083
+JPM,2022-05-20,8-K,"5.07,9.01",Shareholder vote results; Financial statements and exhibits,0000019617-22-000367
+JPM,2022-05-23,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000369
+JPM,2022-06-14,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-173846
+JPM,2022-06-27,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000395
+JPM,2022-06-27,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-22-000392
+JPM,2022-07-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000412
+JPM,2022-07-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-22-000410
+JPM,2022-07-19,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-22-000414
+JPM,2022-07-25,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-200868
+JPM,2022-07-28,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-204833
+JPM,2022-08-11,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-218556
+JPM,2022-09-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-236574
+JPM,2022-09-14,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-244747
+JPM,2022-09-30,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-255590
+JPM,2022-10-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-22-000488
+JPM,2022-10-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-22-000486
+JPM,2022-12-15,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-22-305905
+JPM,2023-01-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000077
+JPM,2023-01-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-23-000063
+JPM,2023-01-17,8-K,"5.03,9.01",Other; Financial statements and exhibits,0000019617-23-000083
+JPM,2023-01-17,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-23-000082
+JPM,2023-01-19,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-23-000104
+JPM,2023-03-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-056441
+JPM,2023-04-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000297
+JPM,2023-04-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-23-011546
+JPM,2023-04-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950103-23-005982
+JPM,2023-05-01,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000306
+JPM,2023-05-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-23-000304
+JPM,2023-05-18,8-K,"5.07,9.01",Shareholder vote results; Financial statements and exhibits,0000019617-23-000382
+JPM,2023-05-22,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000388
+JPM,2023-06-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-158957
+JPM,2023-06-26,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-23-000408
+JPM,2023-06-30,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000415
+JPM,2023-06-30,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-23-000413
+JPM,2023-07-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000428
+JPM,2023-07-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-23-000425
+JPM,2023-07-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-192268
+JPM,2023-09-22,8-K,"5.03,9.01",Other; Financial statements and exhibits,0000019617-23-000501
+JPM,2023-10-13,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-23-000510
+JPM,2023-10-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-23-000508
+JPM,2023-10-23,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-260837
+JPM,2023-10-27,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-23-000517
+JPM,2024-01-12,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000063
+JPM,2024-01-12,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-24-000049
+JPM,2024-01-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-24-000079
+JPM,2024-01-18,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-24-000109
+JPM,2024-01-23,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001628280-24-001950
+JPM,2024-01-25,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-24-000166
+JPM,2024-03-12,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-24-065885
+JPM,2024-03-21,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-073915
+JPM,2024-04-08,8-K,5.02,Executive or director change,0000019617-24-000275
+JPM,2024-04-12,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000318
+JPM,2024-04-12,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-24-000315
+JPM,2024-04-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-104926
+JPM,2024-05-06,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-24-000330
+JPM,2024-05-15,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000402
+JPM,2024-05-20,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000404
+JPM,2024-05-23,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0000019617-24-000411
+JPM,2024-06-03,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950103-24-007646
+JPM,2024-06-28,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000435
+JPM,2024-06-28,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-24-000434
+JPM,2024-07-12,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000448
+JPM,2024-07-12,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-24-000446
+JPM,2024-07-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-182227
+JPM,2024-07-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-183855
+JPM,2024-08-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-203699
+JPM,2024-09-27,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-228029
+JPM,2024-10-11,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-24-000558
+JPM,2024-10-11,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-24-000555
+JPM,2024-10-17,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000019617-24-000595
+JPM,2024-10-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-241062
+JPM,2024-11-29,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-268103
+JPM,2024-12-12,8-K,5.02,Executive or director change,0000019617-24-000660
+JPM,2025-01-14,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001193125-25-006009
+JPM,2025-01-15,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-25-000042
+JPM,2025-01-15,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-25-000040
+JPM,2025-01-23,8-K,5.02,Executive or director change,0000019617-25-000056
+JPM,2025-01-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-012230
+JPM,2025-01-27,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-013396
+JPM,2025-02-04,8-K,"3.03,5.03,8.01,9.01",Other; Other; Other events; Financial statements and exhibits,0001193125-25-020070
+JPM,2025-04-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-078015
+JPM,2025-04-11,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-25-000334
+JPM,2025-04-11,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-25-000332
+JPM,2025-04-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-089203
+JPM,2025-05-19,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-25-000483
+JPM,2025-05-22,8-K,"5.07,9.01",Shareholder vote results; Financial statements and exhibits,0000019617-25-000485
+JPM,2025-07-01,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-25-000510
+JPM,2025-07-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000019617-25-000509
+JPM,2025-07-15,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000019617-25-000520
+JPM,2025-07-15,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000019617-25-000518
+JPM,2025-07-23,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-163423
+JPM,2025-09-12,8-K,"5.03,9.01",Other; Financial statements and exhibits,0000019617-25-000907
+JPM,2025-10-14,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001628280-25-044887
+JPM,2025-10-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-044845
+JPM,2025-10-22,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-246803
+JPM,2025-12-08,8-K,5.02,Executive or director change,0000019617-25-001100
+KO,2021-02-10,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0000021344-21-000003
+KO,2021-02-22,8-K,5.02,Executive or director change,0001552781-21-000039
+KO,2021-03-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000052
+KO,2021-03-05,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000076
+KO,2021-03-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000082
+KO,2021-03-09,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000083
+KO,2021-04-08,8-K,8.01,Other events,0001552781-21-000188
+KO,2021-04-19,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001552781-21-000224
+KO,2021-04-19,8-K,2.02,Results of operations (earnings),0000021344-21-000011
+KO,2021-04-21,8-K,"5.02,8.01,9.01",Executive or director change; Other events; Financial statements and exhibits,0001552781-21-000235
+KO,2021-04-22,8-K,5.07,Shareholder vote results,0001552781-21-000242
+KO,2021-04-28,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000255
+KO,2021-04-30,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000269
+KO,2021-05-05,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000338
+KO,2021-05-06,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000351
+KO,2021-05-12,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000415
+KO,2021-05-17,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-21-000435
+KO,2021-05-20,8-K,8.01,Other events,0001552781-21-000451
+KO,2021-06-04,8-K,8.01,Other events,0001552781-21-000502
+KO,2021-07-21,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-21-000021
+KO,2021-08-24,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-21-000687
+KO,2021-10-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-21-000027
+KO,2021-12-20,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-21-000856
+KO,2022-02-10,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-22-000004
+KO,2022-02-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-22-000167
+KO,2022-03-04,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-22-000236
+KO,2022-03-08,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001552781-22-000242
+KO,2022-04-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-22-000013
+KO,2022-04-27,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0001552781-22-000366
+KO,2022-07-21,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-22-000509
+KO,2022-07-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-22-000030
+KO,2022-08-23,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-22-000543
+KO,2022-10-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-22-000038
+KO,2022-12-12,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001552781-22-000649
+KO,2023-02-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-23-000005
+KO,2023-04-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-23-000017
+KO,2023-04-26,8-K,5.07,Shareholder vote results,0000021344-23-000026
+KO,2023-07-19,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000021344-23-000041
+KO,2023-07-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-23-000045
+KO,2023-10-20,8-K,"5.03,9.01",Other; Financial statements and exhibits,0000021344-23-000051
+KO,2023-10-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-23-000057
+KO,2024-02-13,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-24-000004
+KO,2024-04-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-24-000013
+KO,2024-05-02,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0001552781-24-000261
+KO,2024-05-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000299
+KO,2024-05-13,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000313
+KO,2024-05-14,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000325
+KO,2024-07-23,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000021344-24-000040
+KO,2024-07-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-24-000037
+KO,2024-08-09,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000465
+KO,2024-08-14,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000487
+KO,2024-08-15,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001552781-24-000497
+KO,2024-08-21,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000021344-24-000047
+KO,2024-10-17,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000021344-24-000051
+KO,2024-10-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-24-000056
+KO,2024-12-11,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-24-000626
+KO,2024-12-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-24-000634
+KO,2025-02-11,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-25-000005
+KO,2025-03-27,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0000021344-25-000019
+KO,2025-04-29,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-25-000024
+KO,2025-05-02,8-K,"5.07,9.01",Shareholder vote results; Financial statements and exhibits,0000021344-25-000033
+KO,2025-06-26,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000021344-25-000047
+KO,2025-07-22,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000021344-25-000054
+KO,2025-10-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001628280-25-045223
+KO,2025-10-21,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-045577
+KO,2025-12-10,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001552781-25-000454
+LLY,2021-01-14,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-21-000004
+LLY,2021-01-29,8-K,2.02,Results of operations (earnings),0000059478-21-000010
+LLY,2021-02-09,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001193125-21-033302
+LLY,2021-02-17,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-21-000081
+LLY,2021-04-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-21-000117
+LLY,2021-05-05,8-K,5.07,Shareholder vote results,0000059478-21-000126
+LLY,2021-05-27,8-K,8.01,Other events,0001193125-21-174261
+LLY,2021-08-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-21-000168
+LLY,2021-08-17,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-21-000175
+LLY,2021-08-25,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-21-000190
+LLY,2021-09-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-270093
+LLY,2021-10-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-21-000213
+LLY,2021-12-15,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-21-357380
+LLY,2021-12-16,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001193125-21-359144
+LLY,2022-01-31,8-K,8.01,Other events,0001193125-22-022446
+LLY,2022-02-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-22-000016
+LLY,2022-04-14,8-K,2.02,Results of operations (earnings),0000059478-22-000117
+LLY,2022-04-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-22-000130
+LLY,2022-05-04,8-K,"3.03,5.03,5.07,9.01",Other; Other; Shareholder vote results; Financial statements and exhibits,0000059478-22-000138
+LLY,2022-05-06,8-K,5.02,Executive or director change,0000059478-22-000143
+LLY,2022-08-04,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-22-000194
+LLY,2022-10-12,8-K,8.01,Other events,0000059478-22-000233
+LLY,2022-11-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-22-000248
+LLY,2022-12-13,8-K,2.02,Results of operations (earnings),0000059478-22-000277
+LLY,2023-02-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-23-000025
+LLY,2023-02-24,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-048910
+LLY,2023-03-17,8-K,5.02,Executive or director change,0000059478-23-000118
+LLY,2023-04-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-23-000160
+LLY,2023-05-04,8-K,5.07,Shareholder vote results,0000059478-23-000165
+LLY,2023-08-08,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-23-000219
+LLY,2023-11-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-23-000282
+LLY,2024-02-06,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-24-000032
+LLY,2024-02-09,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-029551
+LLY,2024-04-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-24-000116
+LLY,2024-05-09,8-K,5.07,Shareholder vote results,0000059478-24-000127
+LLY,2024-06-05,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-24-000146
+LLY,2024-07-10,8-K,5.02,Executive or director change,0000059478-24-000164
+LLY,2024-08-08,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-24-000185
+LLY,2024-08-14,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-200435
+LLY,2024-08-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-24-000196
+LLY,2024-09-09,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-24-000213
+LLY,2024-10-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-24-000242
+LLY,2024-11-19,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0000059478-24-000258
+LLY,2025-01-14,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-25-000005
+LLY,2025-02-06,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-25-000037
+LLY,2025-02-12,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-025057
+LLY,2025-05-01,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-25-000129
+LLY,2025-05-08,8-K,5.07,Shareholder vote results,0000059478-25-000138
+LLY,2025-08-07,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-25-000202
+LLY,2025-08-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-184093
+LLY,2025-10-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000059478-25-000251
+LLY,2025-11-21,8-K,5.02,Executive or director change,0000059478-25-000271
+MSFT,2021-01-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-21-017683
+MSFT,2021-02-16,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-044940
+MSFT,2021-03-02,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-065751
+MSFT,2021-03-17,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-084239
+MSFT,2021-04-12,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-21-112687
+MSFT,2021-04-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-21-134213
+MSFT,2021-05-20,8-K,5.02,Executive or director change,0001193125-21-167940
+MSFT,2021-06-17,8-K,8.01,Other events,0001193125-21-192783
+MSFT,2021-07-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-21-210827
+MSFT,2021-07-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-21-225746
+MSFT,2021-10-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-21-307941
+MSFT,2021-11-30,8-K,5.07,Shareholder vote results,0001193125-21-343711
+MSFT,2022-01-18,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-22-010667
+MSFT,2022-01-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-22-017041
+MSFT,2022-04-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-22-120207
+MSFT,2022-06-02,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-22-165839
+MSFT,2022-07-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-22-202034
+MSFT,2022-10-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-22-268356
+MSFT,2022-12-16,8-K,5.07,Shareholder vote results,0001193125-22-306591
+MSFT,2023-01-18,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-23-009934
+MSFT,2023-01-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-23-014230
+MSFT,2023-04-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001193125-23-115280
+MSFT,2023-07-03,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001193125-23-181341
+MSFT,2023-07-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-23-034400
+MSFT,2023-10-11,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-254151
+MSFT,2023-10-13,8-K,2.01,Completion of acquisition or disposition,0001193125-23-255762
+MSFT,2023-10-16,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001104659-23-109428
+MSFT,2023-10-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-23-054848
+MSFT,2023-10-30,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-265616
+MSFT,2023-11-06,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-23-271376
+MSFT,2023-12-08,8-K,5.07,Shareholder vote results,0001193125-23-291720
+MSFT,2024-01-19,8-K,"1.05,7.01,9.01",Other; Regulation FD disclosure; Financial statements and exhibits,0001193125-24-011295
+MSFT,2024-01-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-008809
+MSFT,2024-04-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-048268
+MSFT,2024-07-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-087835
+MSFT,2024-08-21,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001193125-24-204403
+MSFT,2024-10-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-118955
+MSFT,2024-12-03,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950170-24-132722
+MSFT,2024-12-11,8-K,"5.07,7.01",Shareholder vote results; Regulation FD disclosure,0001193125-24-275524
+MSFT,2025-01-22,8-K,5.02,Executive or director change,0001193125-25-010492
+MSFT,2025-01-29,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-25-010484
+MSFT,2025-04-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-25-061032
+MSFT,2025-07-01,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001193125-25-154103
+MSFT,2025-07-30,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-25-100226
+MSFT,2025-09-30,8-K,5.02,Executive or director change,0001193125-25-225125
+MSFT,2025-10-29,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001193125-25-256310
+MSFT,2025-12-08,8-K,"5.02,5.07",Executive or director change; Shareholder vote results,0001193125-25-311196
+NVDA,2021-02-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-21-000007
+NVDA,2021-03-19,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001045810-21-000034
+NVDA,2021-04-12,8-K,"7.01,9.01",Regulation FD disclosure; Financial statements and exhibits,0001045810-21-000047
+NVDA,2021-05-21,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001045810-21-000056
+NVDA,2021-05-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-21-000063
+NVDA,2021-06-07,8-K,"5.03,5.07,9.01",Other; Shareholder vote results; Financial statements and exhibits,0001045810-21-000075
+NVDA,2021-06-16,8-K,"1.01,2.03,9.01",Entry into a material agreement; New financial obligation; Financial statements and exhibits,0001193125-21-192149
+NVDA,2021-06-28,8-K,"7.01,8.01",Regulation FD disclosure; Other events,0001045810-21-000117
+NVDA,2021-08-18,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-21-000128
+NVDA,2021-11-17,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-21-000160
+NVDA,2022-02-08,8-K,1.02,Termination of a material agreement,0001045810-22-000005
+NVDA,2022-02-16,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-22-000008
+NVDA,2022-03-09,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001045810-22-000023
+NVDA,2022-05-25,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-22-000073
+NVDA,2022-06-06,8-K,"5.02,5.03,5.07,9.01",Executive or director change; Other; Shareholder vote results; Financial statements and exhibits,0001045810-22-000088
+NVDA,2022-08-08,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-22-000133
+NVDA,2022-08-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-22-000136
+NVDA,2022-08-31,8-K,8.01,Other events,0001045810-22-000146
+NVDA,2022-09-01,8-K,8.01,Other events,0001045810-22-000151
+NVDA,2022-11-16,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-22-000163
+NVDA,2023-02-22,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-23-000014
+NVDA,2023-03-08,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001045810-23-000039
+NVDA,2023-05-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-23-000087
+NVDA,2023-06-27,8-K,5.07,Shareholder vote results,0001045810-23-000146
+NVDA,2023-07-24,8-K,5.02,Executive or director change,0001045810-23-000164
+NVDA,2023-08-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-23-000171
+NVDA,2023-10-17,8-K,8.01,Other events,0001045810-23-000217
+NVDA,2023-10-24,8-K,8.01,Other events,0001045810-23-000221
+NVDA,2023-11-21,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-23-000225
+NVDA,2024-02-21,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-24-000028
+NVDA,2024-03-14,8-K,"5.02,5.03,9.01",Executive or director change; Other; Financial statements and exhibits,0001045810-24-000069
+NVDA,2024-05-22,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0001045810-24-000113
+NVDA,2024-06-07,8-K,5.03,Other,0001045810-24-000144
+NVDA,2024-07-02,8-K,5.07,Shareholder vote results,0001045810-24-000206
+NVDA,2024-08-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-24-000262
+NVDA,2024-11-07,8-K,5.02,Executive or director change,0001045810-24-000300
+NVDA,2024-11-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-24-000315
+NVDA,2025-01-17,8-K,8.01,Other events,0001045810-25-000007
+NVDA,2025-02-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-25-000021
+NVDA,2025-03-07,8-K,5.02,Executive or director change,0001045810-25-000039
+NVDA,2025-04-15,8-K,8.01,Other events,0001045810-25-000082
+NVDA,2025-05-28,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-25-000115
+NVDA,2025-07-01,8-K,5.07,Shareholder vote results,0001045810-25-000179
+NVDA,2025-08-05,8-K,5.02,Executive or director change,0001045810-25-000197
+NVDA,2025-08-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-25-000207
+NVDA,2025-11-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001045810-25-000228
+TSLA,2021-01-04,8-K,1.01,Entry into a material agreement,0001564590-21-000010
+TSLA,2021-01-04,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-21-000008
+TSLA,2021-01-27,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-21-002645
+TSLA,2021-03-15,8-K,8.01,Other events,0001564590-21-012981
+TSLA,2021-03-15,8-K,5.02,Executive or director change,0001564590-21-012962
+TSLA,2021-04-02,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-21-017443
+TSLA,2021-04-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-21-020558
+TSLA,2021-06-07,8-K,5.02,Executive or director change,0001564590-21-031976
+TSLA,2021-07-02,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0000950170-21-000423
+TSLA,2021-07-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-21-037953
+TSLA,2021-08-30,8-K,1.01,Entry into a material agreement,0001564590-21-046390
+TSLA,2021-10-04,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-21-049874
+TSLA,2021-10-13,8-K,5.07,Shareholder vote results,0001564590-21-050737
+TSLA,2021-10-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-21-051307
+TSLA,2021-12-01,8-K,8.01,Other events,0001564590-21-058953
+TSLA,2022-01-03,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-22-000009
+TSLA,2022-01-26,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-22-002476
+TSLA,2022-03-28,8-K,8.01,Other events,0001564590-22-011875
+TSLA,2022-04-04,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-22-013264
+TSLA,2022-04-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-22-014917
+TSLA,2022-05-03,8-K,8.01,Other events,0001564590-22-017214
+TSLA,2022-07-05,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-22-025153
+TSLA,2022-07-20,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-22-026048
+TSLA,2022-08-05,8-K,"5.07,8.01,9.01",Shareholder vote results; Other events; Financial statements and exhibits,0001564590-22-028207
+TSLA,2022-09-28,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001564590-22-032575
+TSLA,2022-10-03,8-K,"2.02,7.01,9.01",Results of operations (earnings); Regulation FD disclosure; Financial statements and exhibits,0001564590-22-033053
+TSLA,2022-10-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-22-034639
+TSLA,2023-01-03,8-K,"2.02,8.01,9.01",Results of operations (earnings); Other events; Financial statements and exhibits,0001564590-23-000002
+TSLA,2023-01-25,8-K,"1.01,1.02,2.02,2.03,9.01",Entry into a material agreement; Termination of a material agreement; Results of operations (earnings); New financial obligation; Financial statements and exhibits,0001564590-23-000799
+TSLA,2023-04-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-23-005126
+TSLA,2023-04-05,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001564590-23-005462
+TSLA,2023-04-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001564590-23-005959
+TSLA,2023-05-22,8-K,5.07,Shareholder vote results,0001564590-23-007379
+TSLA,2023-07-03,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-23-031241
+TSLA,2023-07-19,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-23-033544
+TSLA,2023-07-20,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950170-23-033695
+TSLA,2023-08-07,8-K,5.02,Executive or director change,0000950170-23-038779
+TSLA,2023-10-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-23-050938
+TSLA,2023-10-18,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-23-034588
+TSLA,2024-01-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-000282
+TSLA,2024-01-24,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-007073
+TSLA,2024-04-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-040274
+TSLA,2024-04-16,8-K,"5.02,8.01",Executive or director change; Other events,0000950170-24-044588
+TSLA,2024-04-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0000950170-24-046895
+TSLA,2024-06-14,8-K,5.07,Shareholder vote results,0001104659-24-071439
+TSLA,2024-07-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-24-030714
+TSLA,2024-07-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-24-032603
+TSLA,2024-10-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-24-041816
+TSLA,2024-10-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-24-043432
+TSLA,2025-01-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-000007
+TSLA,2025-01-29,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-002993
+TSLA,2025-04-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-016070
+TSLA,2025-04-22,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-018851
+TSLA,2025-05-16,8-K,"5.03,9.01",Other; Financial statements and exhibits,0001104659-25-050072
+TSLA,2025-05-16,8-K,"5.02,9.01",Executive or director change; Financial statements and exhibits,0001628280-25-026148
+TSLA,2025-07-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-033842
+TSLA,2025-07-10,8-K,5.08,Other,0001628280-25-034692
+TSLA,2025-07-23,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-035738
+TSLA,2025-08-04,8-K,"5.02,7.01,9.01",Executive or director change; Regulation FD disclosure; Financial statements and exhibits,0001104659-25-073263
+TSLA,2025-09-05,8-K,"1.01,9.01",Entry into a material agreement; Financial statements and exhibits,0001104659-25-087862
+TSLA,2025-10-02,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-043530
+TSLA,2025-10-22,8-K,"2.02,9.01",Results of operations (earnings); Financial statements and exhibits,0001628280-25-045861
+TSLA,2025-11-07,8-K,"5.02,5.07,9.01",Executive or director change; Shareholder vote results; Financial statements and exhibits,0001104659-25-108507
+XOM,2021-02-02,8-K,5.02,Executive or director change,0000034088-21-000006
+XOM,2021-02-02,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-21-000004
+XOM,2021-03-01,8-K,5.02,Executive or director change,0000034088-21-000014
+XOM,2021-03-31,8-K,7.01,Regulation FD disclosure,0000034088-21-000017
+XOM,2021-04-30,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-21-000021
+XOM,2021-06-02,8-K,5.07,Shareholder vote results,0000034088-21-000031
+XOM,2021-06-30,8-K,7.01,Regulation FD disclosure,0000034088-21-000041
+XOM,2021-07-22,8-K,5.02,Executive or director change,0000034088-21-000043
+XOM,2021-07-30,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-21-000046
+XOM,2021-09-30,8-K,7.01,Regulation FD disclosure,0000034088-21-000057
+XOM,2021-10-29,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-21-000061
+XOM,2021-11-17,8-K,8.01,Other events,0000034088-21-000066
+XOM,2021-11-30,8-K,5.02,Executive or director change,0000034088-21-000069
+XOM,2021-12-17,8-K,"1.02,2.04,8.01",Termination of a material agreement; Other; Other events,0000950103-21-019926
+XOM,2021-12-30,8-K,7.01,Regulation FD disclosure,0000034088-21-000072
+XOM,2022-01-31,8-K,7.01,Regulation FD disclosure,0000034088-22-000002
+XOM,2022-02-01,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-22-000005
+XOM,2022-03-03,8-K,7.01,Regulation FD disclosure,0000034088-22-000013
+XOM,2022-03-22,8-K,"5.02,7.01",Executive or director change; Regulation FD disclosure,0000034088-22-000016
+XOM,2022-04-04,8-K,7.01,Regulation FD disclosure,0000034088-22-000018
+XOM,2022-04-29,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-22-000023
+XOM,2022-06-01,8-K,5.07,Shareholder vote results,0000034088-22-000034
+XOM,2022-06-17,8-K,7.01,Regulation FD disclosure,0000034088-22-000040
+XOM,2022-07-01,8-K,7.01,Regulation FD disclosure,0000034088-22-000044
+XOM,2022-07-29,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-22-000048
+XOM,2022-10-04,8-K,7.01,Regulation FD disclosure,0000034088-22-000054
+XOM,2022-10-28,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-22-000057
+XOM,2022-10-31,8-K,7.01,Regulation FD disclosure,0000034088-22-000062
+XOM,2022-10-31,8-K,5.03,Other,0000034088-22-000060
+XOM,2022-11-18,8-K,8.01,Other events,0000034088-22-000067
+XOM,2022-12-02,8-K,5.02,Executive or director change,0000034088-22-000069
+XOM,2022-12-05,8-K,5.02,Executive or director change,0000034088-22-000071
+XOM,2022-12-23,8-K,"1.02,8.01",Termination of a material agreement; Other events,0000950103-22-021377
+XOM,2023-01-04,8-K,7.01,Regulation FD disclosure,0000034088-23-000003
+XOM,2023-01-31,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-23-000011
+XOM,2023-02-24,8-K,5.02,Executive or director change,0000034088-23-000022
+XOM,2023-04-04,8-K,7.01,Regulation FD disclosure,0000034088-23-000025
+XOM,2023-04-28,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-23-000028
+XOM,2023-06-06,8-K,5.07,Shareholder vote results,0000034088-23-000036
+XOM,2023-07-05,8-K,7.01,Regulation FD disclosure,0000034088-23-000043
+XOM,2023-07-13,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950103-23-010291
+XOM,2023-07-28,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-23-000046
+XOM,2023-10-04,8-K,7.01,Regulation FD disclosure,0000034088-23-000051
+XOM,2023-10-11,8-K,"1.01,8.01,9.01",Entry into a material agreement; Other events; Financial statements and exhibits,0000950103-23-014885
+XOM,2023-10-20,8-K,8.01,Other events,0001193125-23-260004
+XOM,2023-10-27,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-23-000054
+XOM,2023-11-02,8-K,7.01,Regulation FD disclosure,0001193125-23-268938
+XOM,2023-11-07,8-K,5.02,Executive or director change,0000034088-23-000059
+XOM,2023-11-15,8-K,8.01,Other events,0000034088-23-000062
+XOM,2023-12-06,8-K,8.01,Other events,0000950103-23-017257
+XOM,2024-01-04,8-K,7.01,Regulation FD disclosure,0000034088-24-000003
+XOM,2024-02-02,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-24-000007
+XOM,2024-02-28,8-K,5.02,Executive or director change,0000034088-24-000015
+XOM,2024-04-03,8-K,7.01,Regulation FD disclosure,0000034088-24-000021
+XOM,2024-04-26,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-24-000025
+XOM,2024-05-03,8-K,"2.01,5.02,7.01,8.01,9.01",Completion of acquisition or disposition; Executive or director change; Regulation FD disclosure; Other events; Financial statements and exhibits,0000950103-24-006322
+XOM,2024-05-10,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0000950103-24-006564
+XOM,2024-05-31,8-K,"5.02,5.07",Executive or director change; Shareholder vote results,0000034088-24-000036
+XOM,2024-07-08,8-K,7.01,Regulation FD disclosure,0000034088-24-000042
+XOM,2024-08-02,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-24-000048
+XOM,2024-10-03,8-K,7.01,Regulation FD disclosure,0000034088-24-000059
+XOM,2024-10-08,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-24-234137
+XOM,2024-10-18,8-K,5.02,Executive or director change,0000034088-24-000062
+XOM,2024-11-01,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-24-000066
+XOM,2024-11-12,8-K,8.01,Other events,0000034088-24-000071
+XOM,2025-01-07,8-K,7.01,Regulation FD disclosure,0000034088-25-000003
+XOM,2025-01-31,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-25-000006
+XOM,2025-04-01,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-070417
+XOM,2025-04-03,8-K,7.01,Regulation FD disclosure,0000034088-25-000017
+XOM,2025-04-03,8-K,5.02,Executive or director change,0000034088-25-000015
+XOM,2025-05-02,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-25-000022
+XOM,2025-05-30,8-K,5.07,Shareholder vote results,0000034088-25-000030
+XOM,2025-07-07,8-K,7.01,Regulation FD disclosure,0000034088-25-000036
+XOM,2025-08-01,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-25-000040
+XOM,2025-10-06,8-K,7.01,Regulation FD disclosure,0000034088-25-000055
+XOM,2025-10-31,8-K,"2.02,7.01",Results of operations (earnings); Regulation FD disclosure,0000034088-25-000059
+XOM,2025-11-03,8-K,5.02,Executive or director change,0000034088-25-000063
+XOM,2025-11-13,8-K,"8.01,9.01",Other events; Financial statements and exhibits,0001193125-25-279379
+XOM,2025-11-18,8-K,8.01,Other events,0000034088-25-000074
+XOM,2025-12-09,8-K,5.02,Executive or director change,0000034088-25-000122
