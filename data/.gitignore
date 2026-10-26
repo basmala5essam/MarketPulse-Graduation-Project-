@@ -1,0 +1,11 @@
+# Large raw datasets — keep locally, do not track in Git
+data/recovery/alpaca_news_recovered.csv
+data/raw/alpaca_news_2021_2025_validated.csv
+
+# Allow the compressed recovery archives
+!data/recovery/alpaca_news_recovery.zip
+!data/recovery/alpaca_news_recovered.zip
+
+
+/data/raw/alpaca_news_2021_2025_validated.csv
+/data/recovery/alpaca_news_recovered.csv
