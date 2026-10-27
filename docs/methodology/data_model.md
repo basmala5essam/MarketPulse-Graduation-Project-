@@ -81,11 +81,14 @@ The ten rows are the project tickers listed in section 1.
 |---|---|---|---|
 | `ticker` | string | **PK** | Uppercase stock symbol, for example `AAPL` |
 | `company_name` | string | | Full company name |
-| `sector` | string | | Sector used for grouping (Technology, Finance, Healthcare, Energy, Consumer) |
+| `sector` | string | | Sector (Technology, Consumer Cyclical, Healthcare, Financial Services, Consumer Defensive, Energy) |
+| `industry` | string | | Industry within the sector, for example `Semiconductors` |
+| `currency` | string | | Trading currency (`USD` for all ten companies) |
 | `cik` | integer | | SEC Central Index Key, used to pull fundamentals and 8-K filings |
 
-Source: manual list. `cik` comes from `https://www.sec.gov/files/company_tickers.json`.
-This table is **not produced by the notebooks**, so it must be created separately.
+Source: the team's company table, built by `04_companies_dimension.ipynb`. `cik` comes from `https://www.sec.gov/files/company_tickers.json`.
+Output: `companies.csv`.
+`XOM` keeps its original CIK (34088), the one its 2021-2025 filings are under, even though the SEC ticker file now lists a different CIK after a 2026 corporate change. Use the original CIK when pulling fundamentals and 8-K filings for that period.
 
 ### 3.2 `market_prices` (fact), exported as `market_clean.csv`
 

@@ -1,0 +1,11 @@
+ticker,company_name,sector,industry,currency,cik
+AAPL,Apple Inc.,Technology,Consumer Electronics,USD,320193
+AMZN,"Amazon.com, Inc.",Consumer Cyclical,Internet Retail,USD,1018724
+JNJ,Johnson & Johnson,Healthcare,Pharmaceuticals,USD,200406
+JPM,JPMorgan Chase & Co.,Financial Services,Diversified Banking,USD,19617
+KO,The Coca-Cola Company,Consumer Defensive,Non-Alcoholic Beverages,USD,21344
+LLY,Eli Lilly and Company,Healthcare,Pharmaceuticals,USD,59478
+MSFT,Microsoft Corporation,Technology,Software—Infrastructure,USD,789019
+NVDA,NVIDIA Corporation,Technology,Semiconductors,USD,1045810
+TSLA,"Tesla, Inc.",Consumer Cyclical,Auto Manufacturers,USD,1318605
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,USD,34088
