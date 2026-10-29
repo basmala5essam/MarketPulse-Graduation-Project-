@@ -198,18 +198,26 @@ Columns that do not apply to an event type are left empty.
 | `ticker` | string | FK -> `companies.ticker` | Stock symbol |
 | `event_type` | string | | `earnings` or `8-K` |
 | `event_date` | date | | Earnings announcement date, or SEC filing date for 8-K |
-| `reaction_date` | date | | First trading day the market could reasonably react, based on the available timestamp and the documented rules |
-| `after_close` | boolean | | Earnings only. Timing flag, if available |
+| `reaction_date` | date | | First trading day the market could reasonably react (NYSE calendar). Earnings: same day if announced before the close, next trading day if after. 8-K: the filing date (next trading day if not a trading day), except an 8-K with item `2.02` filed on an earnings date, which takes that earnings event's reaction date |
+| `after_close` | boolean | | Earnings only. True if announced after the 4 PM New York close |
 | `eps_estimate` | decimal | | Earnings only. Expected EPS |
 | `eps_actual` | decimal | | Earnings only. Reported EPS |
 | `surprise_pct` | decimal | | Earnings only. Surprise in percent |
 | `items` | string | | 8-K only. Item codes such as `2.02`, if available |
 | `items_description` | string | | 8-K only. Plain-English description of the items, if available |
+| `accession_number` | string | | 8-K only. SEC accession number, the unique ID of the filing (kept for traceability) |
 
-Primary key: `event_id`.
+Primary key: `event_id` (generated 1..n after sorting by date, ticker, type). Natural keys: (`ticker`, `event_date`)
+for earnings and `accession_number` for 8-K.
 Source: structured Yahoo Finance earnings events (`earnings_events.csv`) and SEC EDGAR 8-K records
-(`events_8k.csv`), stacked into one table. General Alpaca articles do not become events. If an event-extraction
+(`events_8k.csv`), stacked into one table by `05_events_cleaning.ipynb`. Output: `events_clean.csv`. General Alpaca articles do not become events. If an event-extraction
 feature is added later, document it separately and avoid duplicate events.
+
+Every earnings announcement also has a matching 8-K with item `2.02` (the earnings release), so the same news
+appears as two rows. Use `event_type = 'earnings'` (or exclude `items` containing `2.02`) when counting earnings
+events. Two raw earnings timestamps were corrected to after-close (`AMZN` 2024-08-01, `TSLA` 2021-10-20); the
+list is in the notebook (`TIMING_OVERRIDES`). `eps_estimate` and `eps_actual` are Yahoo's split-adjusted figures
+and are not comparable with `fundamentals.eps_diluted`, which is as filed.
 
 ### 3.7 `fundamentals` (optional)
 
@@ -219,7 +227,7 @@ One row per company per fiscal quarter.
 |---|---|---|---|
 | `ticker` | string | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol |
 | `period_end` | date | **PK (part 2)** | Last day of the fiscal quarter |
-| `filing_date` | date | | Day the numbers became public. Used to avoid look-ahead bias |
+| `filing_date` | date | | Day all numbers in the row were public: the latest of the per-metric filing dates in the raw file. Used to avoid look-ahead bias |
 | `revenue` | decimal | | Quarterly revenue (USD) |
 | `net_income` | decimal | | Quarterly net income (USD) |
 | `eps_diluted` | decimal | | Diluted EPS (USD per share) |
@@ -228,7 +236,12 @@ One row per company per fiscal quarter.
 | `profit_margin` | decimal | | `net_income / revenue` |
 
 Primary key: composite (`ticker`, `period_end`).
-Source: `fundamentals.csv`. Revenue, net income and EPS do not include the fourth quarter.
+Source: `company_fundamentals.csv`, cleaned by `06_fundamentals_cleaning.ipynb`. Output: `fundamentals_clean.csv`.
+Rows with no values at all are dropped. Expected gaps, not errors: revenue, net income and EPS are empty for fiscal
+Q4 rows (they come from the annual report), `JPM` has no revenue (so no `profit_margin`), and `JNJ` has no equity for
+most of 2021-2022. A few `JNJ` rows mix an original filing with a later re-report, so their `filing_date` is later
+than the first publication of some values (conservative on purpose). Margins above 100% are real one-off items
+(`JNJ` 2023-Q3, the Kenvue separation gain).
 
 ### 3.8 `risk` (optional, derived)
 
@@ -291,6 +304,7 @@ Notes on the links between the fact tables:
 | `events_clean.csv` | `events` | one row per earnings or 8-K event | Recommended |
 | `news_articles_sentiment.csv` | `news_articles` | one row per unique article | Optional (normalized model, auditing) |
 | `news_tickers.csv` | `news_tickers` | one row per article-ticker pair | Optional (normalized model) |
+| `fundamentals_clean.csv` | `fundamentals` | one row per ticker and fiscal quarter | Optional |
 
 Power BI setup:
 
@@ -333,3 +347,5 @@ Power BI setup:
     columns (banks).
 13. The news notebooks were tested on synthetic data only and have not been run end to end on the final
     dataset, so confirm the column names against real output before building the Power BI model.
+14. The events and fundamentals notebooks were run on the actual raw files (844 events, 192 fundamentals rows).
+15. Do not count earnings twice: each earnings event has a matching 8-K with item `2.02`.
