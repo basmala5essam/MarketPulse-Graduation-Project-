@@ -5,6 +5,7 @@ connect, and what Power BI will eventually receive.
 
 ## 1. Decisions
 
+<<<<<<< Updated upstream
 | Question | Answer |
 |---|---|
 | What tables do we need? | `companies`, `market_prices`, `news_articles`, `news_tickers`, `events` (core). `fundamentals`, `risk` and `dim_date` are optional extensions. |
@@ -15,6 +16,13 @@ connect, and what Power BI will eventually receive.
 | How is sentiment calculated? | By the project, once per article, with FinBERT (`ProsusAI/finbert`) on headline plus summary. `finbert_score = P(positive) - P(negative)`. Alpaca provides no sentiment score, so `av_score` is not part of this model. |
 | What are `events`? | Structured earnings announcements and SEC 8-K filings only. General news articles do not automatically become events. |
 | What will Power BI eventually receive? | `market_clean.csv` and `news_clean.csv` (required). `companies.csv` and `events_clean.csv` are recommended so relationships and slicers work (see section 5). `news_articles_sentiment.csv` and `news_tickers.csv` are the normalized alternative to `news_clean.csv`. |
+=======
+| Question                               | Answer                                                                                                                                                                |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| What tables do we need?                | `companies`, `market_prices`, `news`, `events` (core). `fundamentals` and `risk` are optional extensions.                                                 |
+| How will they connect?                 | `companies` is the central dimension. Every other table links to it through `ticker`.                                                                             |
+| What will Power BI eventually receive? | `market_clean.csv` and `news_clean.csv` (required). `companies.csv` and `events_clean.csv` are recommended so relationships and slicers work (see section 5). |
+>>>>>>> Stashed changes
 
 ## 2. Data model
 
@@ -77,6 +85,7 @@ Data types use generic names. The Power BI type is shown where it differs.
 One row per company. Small, static, and built by hand from the ticker list plus the SEC ticker map.
 The ten rows are the project tickers listed in section 1.
 
+<<<<<<< Updated upstream
 | Column | Data type | Key | Description |
 |---|---|---|---|
 | `ticker` | string | **PK** | Uppercase stock symbol, for example `AAPL` |
@@ -85,6 +94,14 @@ The ten rows are the project tickers listed in section 1.
 | `industry` | string | | Industry within the sector, for example `Semiconductors` |
 | `currency` | string | | Trading currency (`USD` for all ten companies) |
 | `cik` | integer | | SEC Central Index Key, used to pull fundamentals and 8-K filings |
+=======
+| Column           | Data type | Key          | Description                                                                  |
+| ---------------- | --------- | ------------ | ---------------------------------------------------------------------------- |
+| `ticker`       | string    | **PK** | Stock symbol, for example `AAPL`                                           |
+| `company_name` | string    |              | Full company name                                                            |
+| `sector`       | string    |              | Sector used for grouping (Technology, Finance, Healthcare, Energy, Consumer) |
+| `cik`          | integer   |              | SEC Central Index Key, used to pull fundamentals and 8-K filings             |
+>>>>>>> Stashed changes
 
 Source: the team's company table, built by `04_companies_dimension.ipynb`. `cik` comes from `https://www.sec.gov/files/company_tickers.json`.
 Output: `companies.csv`.
@@ -94,6 +111,7 @@ Output: `companies.csv`.
 
 One row per stock per trading day.
 
+<<<<<<< Updated upstream
 | Column | Data type | Key | Description |
 |---|---|---|---|
 | `ticker` | string | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol |
@@ -105,6 +123,19 @@ One row per stock per trading day.
 | `volume` | integer | | Shares traded |
 | `return` | decimal | | Return for the trading day, as defined by Person 1. Empty on the first day of each stock |
 | `next_day_return` | decimal | | Return of the following trading day, if retained. Empty on the last day of each stock |
+=======
+| Column              | Data type | Key                                               | Description                                                                                          |
+| ------------------- | --------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ticker`          | string    | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol                                                                                         |
+| `date`            | date      | **PK (part 2)**                             | Trading day                                                                                          |
+| `open`            | decimal   |                                                   | Opening price (adjusted)                                                                             |
+| `high`            | decimal   |                                                   | Highest price of the day                                                                             |
+| `low`             | decimal   |                                                   | Lowest price of the day                                                                              |
+| `close`           | decimal   |                                                   | Closing price (adjusted for splits and dividends)                                                    |
+| `volume`          | integer   |                                                   | Shares traded                                                                                        |
+| `return`          | decimal   |                                                   | Percentage change of `close` versus the previous trading day. Empty on the first day of each stock |
+| `next_day_return` | decimal   |                                                   | Return of the following trading day. Empty on the last day of each stock                             |
+>>>>>>> Stashed changes
 
 Primary key: composite (`ticker`, `date`).
 Source: `prices.csv` and the return calculation in `final_dataset.csv`.
@@ -113,6 +144,7 @@ Source: `prices.csv` and the return calculation in `final_dataset.csv`.
 
 One row per unique Alpaca article. FinBERT is run once per article, before ticker expansion.
 
+<<<<<<< Updated upstream
 | Column | Data type | Key | Description |
 |---|---|---|---|
 | `article_id` | string | **PK** | Original Alpaca `id`, kept as a string. Never replace it with a row number |
@@ -134,6 +166,20 @@ One row per unique Alpaca article. FinBERT is run once per article, before ticke
 | `sentiment_text` | string | | The text that was scored (headline plus summary, or headline alone). FinBERT truncates it at 128 tokens. Kept for reproducibility |
 | `quality_missing_title` | boolean | | True if the headline was missing |
 | `quality_missing_published_at` | boolean | | True if the timestamp was missing or unparseable |
+=======
+| Column            | Data type | Key                        | Description                                                                                |
+| ----------------- | --------- | -------------------------- | ------------------------------------------------------------------------------------------ |
+| `news_id`       | integer   | **PK**               | Surrogate key, generated when cleaning (row number)                                        |
+| `ticker`        | string    | FK -> `companies.ticker` | Stock the article is tagged with                                                           |
+| `published_at`  | datetime  |                            | Publication time, parsed from the raw `published` text (for example `20240115T143000`) |
+| `date`          | date      |                            | Calendar date of `published_at`, used to link to `market_prices`                       |
+| `title`         | string    |                            | Headline                                                                                   |
+| `summary`       | string    |                            | Article summary                                                                            |
+| `source`        | string    |                            | Publisher name                                                                             |
+| `av_score`      | decimal   |                            | Alpha Vantage sentiment score for this ticker, roughly -1 to +1                            |
+| `finbert_label` | string    |                            | `positive`, `negative` or `neutral`                                                  |
+| `finbert_score` | decimal   |                            | FinBERT score from -1 to +1. Neutral is always 0                                           |
+>>>>>>> Stashed changes
 
 Primary key: `article_id`. One article appears only once.
 Articles with no usable text keep null FinBERT columns. Sentiment is never invented.
@@ -192,6 +238,7 @@ mentions. It is not ticker-specific sentiment. Describe it as article sentiment 
 One row per company event. Earnings announcements and 8-K filings share one table, separated by `event_type`.
 Columns that do not apply to an event type are left empty.
 
+<<<<<<< Updated upstream
 | Column | Data type | Key | Description |
 |---|---|---|---|
 | `event_id` | integer | **PK** | Surrogate key, generated when cleaning |
@@ -205,7 +252,25 @@ Columns that do not apply to an event type are left empty.
 | `surprise_pct` | decimal | | Earnings only. Surprise in percent |
 | `items` | string | | 8-K only. Item codes such as `2.02`, if available |
 | `items_description` | string | | 8-K only. Plain-English description of the items, if available |
+<<<<<<< Updated upstream
 | `accession_number` | string | | 8-K only. SEC accession number, the unique ID of the filing (kept for traceability) |
+=======
+=======
+| Column                | Data type | Key                        | Description                                                           |
+| --------------------- | --------- | -------------------------- | --------------------------------------------------------------------- |
+| `event_id`          | integer   | **PK**               | Surrogate key, generated when cleaning                                |
+| `ticker`            | string    | FK -> `companies.ticker` | Stock symbol                                                          |
+| `event_type`        | string    |                            | `earnings` or `8-K`                                               |
+| `event_date`        | date      |                            | `announce_date` for earnings, `filing_date` for 8-K               |
+| `reaction_date`     | date      |                            | First trading day the market can react. Equals `event_date` for 8-K |
+| `after_close`       | boolean   |                            | Earnings only. True if announced after 4 PM                           |
+| `eps_estimate`      | decimal   |                            | Earnings only. Expected EPS                                           |
+| `eps_actual`        | decimal   |                            | Earnings only. Reported EPS                                           |
+| `surprise_pct`      | decimal   |                            | Earnings only. Surprise in percent                                    |
+| `items`             | string    |                            | 8-K only. Item codes such as `2.02`                                 |
+| `items_description` | string    |                            | 8-K only. Plain-English description of the items                      |
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 Primary key: `event_id` (generated 1..n after sorting by date, ticker, type). Natural keys: (`ticker`, `event_date`)
 for earnings and `accession_number` for 8-K.
@@ -223,6 +288,7 @@ and are not comparable with `fundamentals.eps_diluted`, which is as filed.
 
 One row per company per fiscal quarter.
 
+<<<<<<< Updated upstream
 | Column | Data type | Key | Description |
 |---|---|---|---|
 | `ticker` | string | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol |
@@ -234,6 +300,19 @@ One row per company per fiscal quarter.
 | `total_assets` | decimal | | Total assets (USD) |
 | `equity` | decimal | | Stockholders' equity (USD) |
 | `profit_margin` | decimal | | `net_income / revenue` |
+=======
+| Column            | Data type | Key                                               | Description                    |
+| ----------------- | --------- | ------------------------------------------------- | ------------------------------ |
+| `ticker`        | string    | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol                   |
+| `period_end`    | date      | **PK (part 2)**                             | Last day of the fiscal quarter |
+| `filing_date`   | date      |                                                   | Day the numbers became public  |
+| `revenue`       | decimal   |                                                   | Quarterly revenue (USD)        |
+| `net_income`    | decimal   |                                                   | Quarterly net income (USD)     |
+| `eps_diluted`   | decimal   |                                                   | Diluted EPS (USD per share)    |
+| `total_assets`  | decimal   |                                                   | Total assets (USD)             |
+| `equity`        | decimal   |                                                   | Stockholders' equity (USD)     |
+| `profit_margin` | decimal   |                                                   | `net_income / revenue`       |
+>>>>>>> Stashed changes
 
 Primary key: composite (`ticker`, `period_end`).
 Source: `company_fundamentals.csv`, cleaned by `06_fundamentals_cleaning.ipynb`. Output: `fundamentals_clean.csv`.
@@ -248,12 +327,12 @@ than the first publication of some values (conservative on purpose). Margins abo
 Calculated from `market_prices`. This table is a proposal and is not produced by the notebooks yet.
 Define the grain before implementing it: daily rolling risk and period-level risk are different grains.
 
-| Column | Data type | Key | Description |
-|---|---|---|---|
-| `ticker` | string | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol |
-| `date` | date | **PK (part 2)** | Trading day |
-| `volatility_30d` | decimal | | Standard deviation of `return` over the last 30 trading days |
-| `max_drawdown` | decimal | | Largest drop from a running peak up to this date |
+| Column             | Data type | Key                                               | Description                                                    |
+| ------------------ | --------- | ------------------------------------------------- | -------------------------------------------------------------- |
+| `ticker`         | string    | **PK (part 1)**, FK -> `companies.ticker` | Stock symbol                                                   |
+| `date`           | date      | **PK (part 2)**                             | Trading day                                                    |
+| `volatility_30d` | decimal   |                                                   | Standard deviation of `return` over the last 30 trading days |
+| `max_drawdown`   | decimal   |                                                   | Largest drop from a running peak up to this date               |
 
 Primary key: composite (`ticker`, `date`).
 
@@ -269,6 +348,7 @@ Primary key: `date`. Built in Power BI or generated once for the project period.
 
 ## 4. Relationships
 
+<<<<<<< Updated upstream
 | From (many) | To (one) | Join column | Cardinality |
 |---|---|---|---|
 | `market_prices.ticker` | `companies.ticker` | `ticker` | many-to-one |
@@ -280,6 +360,15 @@ Primary key: `date`. Built in Power BI or generated once for the project period.
 | `market_prices.date` | `dim_date.date` | `date` | many-to-one |
 | `news_clean.date` | `dim_date.date` | `date` | many-to-one, after the date convention is defined |
 | `events.reaction_date` | `dim_date.date` | `date` | many-to-one |
+=======
+| From (many)                     | To (one)                                 | Join column           | Cardinality |
+| ------------------------------- | ---------------------------------------- | --------------------- | ----------- |
+| `market_prices.ticker`        | `companies.ticker`                     | `ticker`            | many-to-one |
+| `news.ticker`                 | `companies.ticker`                     | `ticker`            | many-to-one |
+| `events.ticker`               | `companies.ticker`                     | `ticker`            | many-to-one |
+| `fundamentals.ticker`         | `companies.ticker`                     | `ticker`            | many-to-one |
+| `risk` (`ticker`, `date`) | `market_prices` (`ticker`, `date`) | `ticker` + `date` | one-to-one  |
+>>>>>>> Stashed changes
 
 Notes on the links between the fact tables:
 
@@ -296,6 +385,7 @@ Notes on the links between the fact tables:
 
 ## 5. What Power BI receives
 
+<<<<<<< Updated upstream
 | File | Table | Grain | Status |
 |---|---|---|---|
 | `market_clean.csv` | `market_prices` | one row per ticker and trading day | Required |
@@ -304,7 +394,18 @@ Notes on the links between the fact tables:
 | `events_clean.csv` | `events` | one row per earnings or 8-K event | Recommended |
 | `news_articles_sentiment.csv` | `news_articles` | one row per unique article | Optional (normalized model, auditing) |
 | `news_tickers.csv` | `news_tickers` | one row per article-ticker pair | Optional (normalized model) |
+<<<<<<< Updated upstream
 | `fundamentals_clean.csv` | `fundamentals` | one row per ticker and fiscal quarter | Optional |
+=======
+=======
+| File                 | Table             | Status      |
+| -------------------- | ----------------- | ----------- |
+| `market_clean.csv` | `market_prices` | Required    |
+| `news_clean.csv`   | `news`          | Required    |
+| `companies.csv`    | `companies`     | Recommended |
+| `events_clean.csv` | `events`        | Recommended |
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 Power BI setup:
 
