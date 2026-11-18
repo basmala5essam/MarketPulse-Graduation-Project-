@@ -33,7 +33,6 @@ DATA_DIR = r"C:\Users\Lenovo\Desktop\MarketPulse-Graduation-Project-\data\proces
 # (staging table name, CSV file name)
 JOBS = [
     ("market",                  "market_clean.csv"),
-    ("news_clean",              "news_clean.csv"),
     ("news_articles_sentiment", "news_articles_sentiment.csv"),
     ("news_tickers",            "news_tickers.csv"),
     ("companies",                "companies.csv"),
