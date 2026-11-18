@@ -30,50 +30,6 @@ EXCEPT
 SELECT ticker, [date], [open], high, low, [close], volume, [return], next_day_return
 FROM bronze.market;
 
-IF OBJECT_ID('bronze.news', 'U') IS NULL
-CREATE TABLE bronze.news (
-    bronze_id INT IDENTITY(1,1) PRIMARY KEY,
-    news_id NVARCHAR(255),
-    article_id NVARCHAR(255),
-    ticker NVARCHAR(255),
-    published_at NVARCHAR(255),
-    [date] NVARCHAR(255),
-    title NVARCHAR(MAX),
-    summary NVARCHAR(MAX),
-    [source] NVARCHAR(255),
-    url NVARCHAR(MAX),
-    n_project_tickers NVARCHAR(255),
-    n_symbols_total NVARCHAR(255),
-    finbert_label NVARCHAR(255),
-    finbert_positive NVARCHAR(255),
-    finbert_negative NVARCHAR(255),
-    finbert_neutral NVARCHAR(255),
-    finbert_score NVARCHAR(255)
-);
-INSERT INTO bronze.news (
-    news_id,
-    article_id,
-    ticker,
-    published_at,
-    [date],
-    title,
-    summary,
-    [source],
-    url,
-    n_project_tickers,
-    n_symbols_total,
-    finbert_label,
-    finbert_positive,
-    finbert_negative,
-    finbert_neutral,
-    finbert_score
-)
-SELECT news_id, article_id, ticker, published_at, [date], title, summary, [source], url, n_project_tickers, n_symbols_total, finbert_label, finbert_positive, finbert_negative, finbert_neutral, finbert_score
-FROM staging.news_clean
-EXCEPT
-SELECT news_id, article_id, ticker, published_at, [date], title, summary, [source], url, n_project_tickers, n_symbols_total, finbert_label, finbert_positive, finbert_negative, finbert_neutral, finbert_score
-FROM bronze.news;
-
 
 IF OBJECT_ID('bronze.artcl_senti', 'U') IS NULL
 CREATE TABLE bronze.artcl_senti (

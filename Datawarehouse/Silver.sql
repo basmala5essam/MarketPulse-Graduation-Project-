@@ -1,4 +1,3 @@
-
 IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'silver')
     EXEC('CREATE SCHEMA silver');
 
@@ -120,122 +119,13 @@ FROM silver.market_prices;
 GO
  
 
-IF OBJECT_ID('silver.news', 'U') IS NULL
-CREATE TABLE silver.news (
-    news_id INT NOT NULL,
-    article_id INT,
-    ticker NVARCHAR(10),
-    published_at DATETIME,
-    [date] DATE,
-    title NVARCHAR(MAX),
-    summary NVARCHAR(MAX),
-    [source] NVARCHAR(20),
-    url NVARCHAR(MAX),
-    n_project_tickers INT,
-    n_symbols_total INT,
-    finbert_label NVARCHAR(20),
-    finbert_positive FLOAT,
-    finbert_negative FLOAT,
-    finbert_neutral FLOAT,
-    finbert_score FLOAT,
-    has_missing_value BIT NOT NULL DEFAULT 0,
-    has_invalid_value BIT NOT NULL DEFAULT 0,
-    has_outlier_value BIT NOT NULL DEFAULT 0,
-    CONSTRAINT PK_silver_news PRIMARY KEY (news_id)
-);
-GO 
+-- one-time fix: if silver.artcl_senti still has the old text type for the sentiment scores, drop it (it is rebuilt from bronze below)
+IF OBJECT_ID('silver.artcl_senti', 'U') IS NOT NULL
+   AND ISNULL((SELECT TYPE_NAME(c.user_type_id) FROM sys.columns AS c
+               WHERE c.object_id = OBJECT_ID('silver.artcl_senti') AND c.name = 'finbert_positive'), 'none') <> 'float'
+    DROP TABLE silver.artcl_senti;
 
-WITH news_latest AS (
-    SELECT *,
-        ROW_NUMBER() OVER (
-            PARTITION BY (LTRIM(RTRIM(news_id)))
-            ORDER BY bronze_id DESC
-        ) AS rn
-    FROM bronze.news
-    WHERE NULLIF(LTRIM(RTRIM(news_id)), '') IS NOT NULL
-),
-news_cleaned AS (
-    SELECT
-        TRY_CAST(NULLIF(LTRIM(RTRIM(news_id)), '') AS INT) AS news_id,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(article_id)), '') AS INT) AS article_id,
-        UPPER(LTRIM(RTRIM(ticker))) AS ticker,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(published_at)), '') AS DATETIME) AS published_at,
-        TRY_CAST(NULLIF(LTRIM(RTRIM([date])), '') AS DATE) AS [date],
-        title, summary, [source], url,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(n_project_tickers)), '') AS INT) AS n_project_tickers,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(n_symbols_total)), '') AS INT) AS n_symbols_total,
-        finbert_label,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_positive)), '') AS FLOAT) AS finbert_positive,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_negative)), '') AS FLOAT) AS finbert_negative,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_neutral)), '') AS FLOAT) AS finbert_neutral,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_score)), '') AS FLOAT) AS finbert_score
-    FROM news_latest
-    WHERE rn = 1
-),
-news_flagged AS (
-    SELECT
-        news_id, article_id, ticker, published_at, [date], title, summary, [source], url,
-        n_project_tickers, n_symbols_total, finbert_label, finbert_positive, finbert_negative, finbert_neutral, finbert_score,
-        CASE WHEN
-            news_id IS NULL OR article_id IS NULL OR ticker IS NULL OR [date] IS NULL OR n_project_tickers IS NULL OR n_symbols_total IS NULL OR finbert_label IS NULL OR finbert_positive IS NULL OR finbert_negative IS NULL OR finbert_neutral IS NULL OR finbert_score IS NULL
-        THEN 1 ELSE 0 END AS has_missing_value,
-        CASE WHEN
-            (news_id IS NOT NULL AND TRY_CAST(news_id AS INT) IS NULL)
-        OR (article_id IS NOT NULL AND TRY_CAST(article_id AS INT) IS NULL)
-        OR (ticker IS NOT NULL AND LEN(ticker) > 10)
-        OR (published_at IS NOT NULL AND TRY_CAST(published_at AS DATETIME) IS NULL)
-        OR ([date] IS NOT NULL AND TRY_CAST([date] AS DATE) IS NULL)
-        OR (n_project_tickers IS NOT NULL AND TRY_CAST(n_project_tickers AS INT) IS NULL)
-        OR (n_symbols_total IS NOT NULL AND TRY_CAST(n_symbols_total AS INT) IS NULL)
-        OR (finbert_label IS NOT NULL AND LEN(finbert_label) > 20)
-        OR (finbert_positive IS NOT NULL AND TRY_CAST(finbert_positive AS FLOAT) IS NULL)
-        OR (finbert_negative IS NOT NULL AND TRY_CAST(finbert_negative AS FLOAT) IS NULL)
-        OR (finbert_neutral IS NOT NULL AND TRY_CAST(finbert_neutral AS FLOAT) IS NULL)
-        OR (finbert_score IS NOT NULL AND TRY_CAST(finbert_score AS FLOAT) IS NULL)
-        THEN 1 ELSE 0 END AS has_invalid_value,
-        CASE WHEN
-            finbert_score < -1.0 OR finbert_score > 1.0
-        THEN 1 ELSE 0 END AS has_outlier_value
-    FROM news_cleaned
-)
-MERGE silver.news AS tgt
-USING news_flagged AS src
-    ON tgt.news_id = src.news_id
-WHEN MATCHED THEN
-    UPDATE SET
-        tgt.article_id = src.article_id,
-        tgt.ticker = src.ticker,
-        tgt.published_at = src.published_at,
-        tgt.[date] = src.[date],
-        tgt.title = src.title,
-        tgt.summary = src.summary,
-        tgt.[source] = src.[source],
-        tgt.url = src.url,
-        tgt.n_project_tickers = src.n_project_tickers,
-        tgt.n_symbols_total = src.n_symbols_total,
-        tgt.finbert_label = src.finbert_label,
-        tgt.finbert_positive = src.finbert_positive,
-        tgt.finbert_negative = src.finbert_negative,
-        tgt.finbert_neutral = src.finbert_neutral,
-        tgt.finbert_score = src.finbert_score,
-        tgt.has_missing_value = src.has_missing_value,
-        tgt.has_invalid_value = src.has_invalid_value,
-        tgt.has_outlier_value = src.has_outlier_value
-WHEN NOT MATCHED THEN
-    INSERT (news_id, article_id, ticker, published_at, [date], title, summary, [source], url, n_project_tickers, n_symbols_total, finbert_label, finbert_positive, finbert_negative, finbert_neutral, finbert_score, has_missing_value, has_invalid_value, has_outlier_value)
-    VALUES (src.news_id, src.article_id, src.ticker, src.published_at, src.[date], src.title, src.summary, src.[source], src.url, src.n_project_tickers, src.n_symbols_total, src.finbert_label, src.finbert_positive, src.finbert_negative, src.finbert_neutral, src.finbert_score, src.has_missing_value, src.has_invalid_value, src.has_outlier_value);
-GO
-
-SELECT
-    SUM(CAST(has_missing_value AS INT)) AS rows_missing,
-    SUM(CAST(has_invalid_value AS INT)) AS rows_invalid,
-    SUM(CAST(has_outlier_value AS INT)) AS rows_outlier
-FROM silver.NEWS;
-GO
- 
-
-
- IF OBJECT_ID('silver.artcl_senti', 'U') IS NULL
+IF OBJECT_ID('silver.artcl_senti', 'U') IS NULL
 CREATE TABLE silver.artcl_senti (
     article_id INT NOT NULL,
     published_at DATETIME,
@@ -248,13 +138,13 @@ CREATE TABLE silver.artcl_senti (
     symbols_raw NVARCHAR(MAX),
     symbols NVARCHAR(MAX),
     finbert_label NVARCHAR(20),
-    finbert_positive NVARCHAR(255),
-    finbert_negative NVARCHAR(255),
-    finbert_neutral NVARCHAR(255),
-    finbert_score NVARCHAR(255),
+    finbert_positive FLOAT,
+    finbert_negative FLOAT,
+    finbert_neutral FLOAT,
+    finbert_score FLOAT,
     sentiment_text NVARCHAR(MAX),
-    quality_missing_title NVARCHAR(25),
-    quality_missing_published_at NVARCHAR(25),
+    quality_missing_title BIT,
+    quality_missing_published_at BIT,
     has_missing_value BIT NOT NULL DEFAULT 0,
     has_invalid_value BIT NOT NULL DEFAULT 0,
     has_outlier_value BIT NOT NULL DEFAULT 0,
@@ -274,15 +164,25 @@ WITH artcl_latest AS (
 artcl_cleaned AS (
     SELECT
         TRY_CAST(NULLIF(LTRIM(RTRIM(article_id)), '') AS INT) AS article_id,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(published_at)), '') AS DATETIME) AS published_at,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(updated_at)), '') AS DATETIME) AS updated_at,
+        TRY_CAST(SWITCHOFFSET(TRY_CAST(NULLIF(LTRIM(RTRIM(published_at)), '') AS DATETIMEOFFSET), '+00:00') AS DATETIME) AS published_at,
+        NULLIF(LTRIM(RTRIM(published_at)), '') AS raw_published_at,
+        TRY_CAST(SWITCHOFFSET(TRY_CAST(NULLIF(LTRIM(RTRIM(updated_at)), '') AS DATETIMEOFFSET), '+00:00') AS DATETIME) AS updated_at,
+        NULLIF(LTRIM(RTRIM(updated_at)), '') AS raw_updated_at,
         title, summary, author, [source], url, symbols_raw, symbols,
         finbert_label,
         TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_positive)), '') AS FLOAT) AS finbert_positive,
         TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_negative)), '') AS FLOAT) AS finbert_negative,
         TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_neutral)), '') AS FLOAT) AS finbert_neutral,
         TRY_CAST(NULLIF(LTRIM(RTRIM(finbert_score)), '') AS FLOAT) AS finbert_score,
-        sentiment_text, quality_missing_title, quality_missing_published_at
+        sentiment_text,
+        CASE WHEN UPPER(LTRIM(RTRIM(quality_missing_title))) IN ('1', 'TRUE', 'YES', 'Y') THEN CAST(1 AS BIT)
+             WHEN UPPER(LTRIM(RTRIM(quality_missing_title))) IN ('0', 'FALSE', 'NO', 'N') THEN CAST(0 AS BIT)
+        END AS quality_missing_title,
+        NULLIF(LTRIM(RTRIM(quality_missing_title)), '') AS raw_quality_missing_title,
+        CASE WHEN UPPER(LTRIM(RTRIM(quality_missing_published_at))) IN ('1', 'TRUE', 'YES', 'Y') THEN CAST(1 AS BIT)
+             WHEN UPPER(LTRIM(RTRIM(quality_missing_published_at))) IN ('0', 'FALSE', 'NO', 'N') THEN CAST(0 AS BIT)
+        END AS quality_missing_published_at,
+        NULLIF(LTRIM(RTRIM(quality_missing_published_at)), '') AS raw_quality_missing_published_at
     FROM artcl_latest
     WHERE rn = 1
 ),
@@ -296,8 +196,10 @@ artcl_flagged AS (
         THEN 1 ELSE 0 END AS has_missing_value,
         CASE WHEN
             (article_id IS NOT NULL AND TRY_CAST(article_id AS INT) IS NULL)
-        OR (published_at IS NOT NULL AND TRY_CAST(published_at AS DATETIME) IS NULL)
-        OR (updated_at IS NOT NULL AND TRY_CAST(updated_at AS DATETIME) IS NULL)
+        OR (raw_published_at IS NOT NULL AND published_at IS NULL)
+        OR (raw_updated_at IS NOT NULL AND updated_at IS NULL)
+        OR (raw_quality_missing_title IS NOT NULL AND quality_missing_title IS NULL)
+        OR (raw_quality_missing_published_at IS NOT NULL AND quality_missing_published_at IS NULL)
         OR (finbert_positive IS NOT NULL AND TRY_CAST(finbert_positive AS FLOAT) IS NULL)
         OR (finbert_negative IS NOT NULL AND TRY_CAST(finbert_negative AS FLOAT) IS NULL)
         OR (finbert_neutral IS NOT NULL AND TRY_CAST(finbert_neutral AS FLOAT) IS NULL)
@@ -449,8 +351,10 @@ news_tickers_cleaned AS (
         NULLIF(LTRIM(RTRIM(ticker)), '') AS ticker,
         CAST(NULLIF(LTRIM(RTRIM(n_symbols_total)), '') AS INT) AS n_symbols_total,
         CAST(NULLIF(LTRIM(RTRIM(n_project_tickers)), '') AS INT) AS n_project_tickers,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(published_at)), '') AS DATETIME) AS published_at,
-        TRY_CAST(NULLIF(LTRIM(RTRIM(reaction_date)), '') AS DATETIME) AS reaction_date
+        TRY_CAST(SWITCHOFFSET(TRY_CAST(NULLIF(LTRIM(RTRIM(published_at)), '') AS DATETIMEOFFSET), '+00:00') AS DATETIME) AS published_at,
+        NULLIF(LTRIM(RTRIM(published_at)), '') AS raw_published_at,
+        TRY_CAST(SWITCHOFFSET(TRY_CAST(NULLIF(LTRIM(RTRIM(reaction_date)), '') AS DATETIMEOFFSET), '+00:00') AS DATETIME) AS reaction_date,
+        NULLIF(LTRIM(RTRIM(reaction_date)), '') AS raw_reaction_date
     FROM news_tickers_latest
     WHERE rn = 1
 ),
@@ -465,8 +369,8 @@ news_tickers_flagged AS (
         OR (ticker IS NOT NULL AND LEN(ticker) > 10)
         OR (n_symbols_total IS NOT NULL AND TRY_CAST(n_symbols_total AS INT) IS NULL)
         OR (n_project_tickers IS NOT NULL AND TRY_CAST(n_project_tickers AS INT) IS NULL)
-        OR (published_at IS NOT NULL AND TRY_CAST(published_at AS DATETIME) IS NULL)
-        OR (reaction_date IS NOT NULL AND TRY_CAST(reaction_date AS DATETIME) IS NULL)
+        OR (raw_published_at IS NOT NULL AND published_at IS NULL)
+        OR (raw_reaction_date IS NOT NULL AND reaction_date IS NULL)
         THEN 1 ELSE 0 END AS has_invalid_value,
         CASE WHEN
             n_symbols_total < 0 OR n_project_tickers < 0
@@ -489,6 +393,12 @@ WHEN NOT MATCHED THEN
     VALUES (src.article_id, src.ticker, src.n_symbols_total, src.n_project_tickers, src.published_at, src.reaction_date, src.has_missing_value, src.has_invalid_value, src.has_outlier_value);
 
 
+-- one-time fix: if silver.events still has the old text type for after_close, drop it (it is rebuilt from bronze below)
+IF OBJECT_ID('silver.events', 'U') IS NOT NULL
+   AND ISNULL((SELECT TYPE_NAME(c.user_type_id) FROM sys.columns AS c
+               WHERE c.object_id = OBJECT_ID('silver.events') AND c.name = 'after_close'), 'none') <> 'bit'
+    DROP TABLE silver.events;
+
 IF OBJECT_ID('silver.events', 'U') IS NULL
 CREATE TABLE silver.events (
     event_id INT ,
@@ -496,7 +406,7 @@ CREATE TABLE silver.events (
     event_type NVARCHAR(25) NOT NULL,
     event_date DATE NOT NULL,
     reaction_date DATE NOT NULL,
-    after_close NVARCHAR(10) ,
+    after_close BIT,
     eps_estimate DECIMAL(18,4),
     eps_actual DECIMAL(18,4),
     surprise_pct DECIMAL(18,4),
@@ -525,7 +435,10 @@ events_cleaned AS (
         event_type,
         TRY_CAST(NULLIF(LTRIM(RTRIM(event_date)), '') AS DATE) AS event_date,
         TRY_CAST(NULLIF(LTRIM(RTRIM(reaction_date)), '') AS DATE) AS reaction_date,
-        CASE WHEN LTRIM(RTRIM(after_close)) IN ('Y', 'N') THEN LTRIM(RTRIM(after_close)) ELSE NULL END AS after_close,
+        CASE WHEN UPPER(LTRIM(RTRIM(after_close))) IN ('1', 'TRUE', 'YES', 'Y') THEN CAST(1 AS BIT)
+             WHEN UPPER(LTRIM(RTRIM(after_close))) IN ('0', 'FALSE', 'NO', 'N') THEN CAST(0 AS BIT)
+        END AS after_close,
+        NULLIF(LTRIM(RTRIM(after_close)), '') AS raw_after_close,
         -- eps_estimate, eps_actual, surprise_pct, items are all DECIMAL(18,4) but can be empty or invalid, so we use TRY_CAST to convert and NULLIF to turn '' into NULL
         -- items_description and accession_number are NVARCHAR(MAX) and can be empty or invalid, so we just trim them and keep them as-is
         TRY_CAST(NULLIF(LTRIM(RTRIM(eps_estimate)), '') AS DECIMAL(18,4)) AS eps_estimate,
@@ -549,6 +462,7 @@ events_flagged AS (
         OR (event_type IS NOT NULL AND LEN(event_type) > 25)
         OR (event_date IS NOT NULL AND TRY_CAST(event_date AS DATE) IS NULL)
         OR (reaction_date IS NOT NULL AND TRY_CAST(reaction_date AS DATE) IS NULL)
+        OR (raw_after_close IS NOT NULL AND after_close IS NULL)
         OR (eps_estimate IS NOT NULL AND TRY_CAST(eps_estimate AS DECIMAL(18,4)) IS NULL)
         OR (eps_actual IS NOT NULL AND TRY_CAST(eps_actual AS DECIMAL(18,4)) IS NULL)
         OR (surprise_pct IS NOT NULL AND TRY_CAST(surprise_pct AS DECIMAL(18,4)) IS NULL)
