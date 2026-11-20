@@ -1,12 +1,15 @@
 """
 Monthly risk table: one row per (ticker, month).
 
-Columns (same as the proposed table):
-    ticker          stock symbol
-    date            last trading day of the month
-    volatility_30d  std of daily returns over the last 30 trading days, as of `date`
-    max_drawdown    largest drop from a running peak, from the start of the data up to `date`
-                    (a negative number, e.g. -0.35 = -35%)
+Columns:
+    ticker                 stock symbol
+    month_end              last trading day of the month
+    monthly_return         compounded daily returns inside the month
+                           (January 2021 starts from the first close, there is no earlier price)
+    vol_20d_ann            std of the last 20 daily returns x sqrt(252), as of `month_end`
+                           (same definition as the daily risk series)
+    drawdown_eom           close on `month_end` / highest close since the start - 1 (0 or negative)
+    max_drawdown_in_month  worst drop inside the month, from that month's own running peak
 
 Output:
     data/processed/risk_monthly.csv
@@ -20,33 +23,46 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = PROJECT_ROOT / "data" / "raw" / "yahoo_prices_raw.csv"
 DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "processed" / "risk_monthly.csv"
 
-WINDOW = 30  # trading days
+WINDOW = 20  # trading days
+TRADING_DAYS = 252
 
 
 def build_monthly_risk(df: pd.DataFrame, window: int = WINDOW) -> pd.DataFrame:
-    df = df.sort_values(["ticker", "date"]).copy()
+    df = df[["ticker", "date", "close"]].sort_values(["ticker", "date"]).reset_index(drop=True)
     g = df.groupby("ticker")["close"]
 
     # Daily figures, calculated per ticker on the full daily history
     df["return"] = g.pct_change()
-    df["volatility_30d"] = df.groupby("ticker")["return"].transform(
-        lambda s: s.rolling(window, min_periods=window).std()
+    df["vol_20d_ann"] = df.groupby("ticker")["return"].transform(
+        lambda s: s.rolling(window, min_periods=window).std() * np.sqrt(TRADING_DAYS)
     )
-    df["max_drawdown"] = df["close"] / g.cummax() - 1
-    df["max_drawdown"] = df.groupby("ticker")["max_drawdown"].cummin()
-
-    # Keep the last trading day of each month, per ticker
+    df["drawdown"] = df["close"] / g.cummax() - 1  # from the running peak since the start (can recover)
     df["month"] = df["date"].dt.to_period("M")
-    monthly = df.groupby(["ticker", "month"], as_index=False).tail(1)
+    df["month_drawdown"] = df["close"] / df.groupby(["ticker", "month"])["close"].cummax() - 1
 
-    out = monthly[["ticker", "date", "volatility_30d", "max_drawdown"]]
-    return out.sort_values(["ticker", "date"]).reset_index(drop=True)
+    keys = ["ticker", "month"]
+    agg = (
+        df.groupby(keys)
+        .agg(
+            monthly_return=("return", lambda s: (1 + s).prod() - 1),
+            max_drawdown_in_month=("month_drawdown", "min"),
+        )
+        .reset_index()
+    )
+    last = (
+        df.groupby(keys).tail(1)[keys + ["date", "vol_20d_ann", "drawdown"]]
+        .rename(columns={"date": "month_end", "drawdown": "drawdown_eom"})
+    )
+    out = last.merge(agg, on=keys, validate="1:1")
+    cols = ["ticker", "month_end", "monthly_return", "vol_20d_ann", "drawdown_eom", "max_drawdown_in_month"]
+    return out[cols].sort_values(["ticker", "month_end"]).reset_index(drop=True)
 
 
 def main() -> None:
