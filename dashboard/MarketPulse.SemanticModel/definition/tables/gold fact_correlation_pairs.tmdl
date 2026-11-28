@@ -1,0 +1,73 @@
+table 'gold fact_correlation_pairs'
+	lineageTag: bbd65b02-4e78-4dff-8376-0e52fa4ce520
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: bd47dc41-5480-4ca2-8bb5-ef23a20a0acd
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column peer_company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 5615deca-4b7b-43b4-ba89-741b0bdc4907
+		summarizeBy: none
+		sourceColumn: peer_company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 122a3051-9c07-4f7f-8797-d6952d9f7588
+		summarizeBy: none
+		sourceColumn: as_of_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column window_type
+		dataType: string
+		lineageTag: 86771326-b7e3-4edc-8caa-5599262a24d7
+		summarizeBy: none
+		sourceColumn: window_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ab42c4bb-7dea-4680-bf0a-8634a4154bf9
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column correlation
+		dataType: double
+		lineageTag: 941fa776-0722-4df3-9a54-f88c147e4799
+		summarizeBy: sum
+		sourceColumn: correlation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'gold fact_correlation_pairs' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_correlation_pairs = Source{[Schema="gold",Item="fact_correlation_pairs"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_correlation_pairs,{"gold.dim_company(company_key)", "gold.dim_company(peer_company_key)", "gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

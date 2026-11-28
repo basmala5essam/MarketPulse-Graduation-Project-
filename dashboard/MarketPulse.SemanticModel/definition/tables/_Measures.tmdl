@@ -1,0 +1,772 @@
+table _Measures
+	lineageTag: fa285e24-6e62-4173-9fc1-48e2e6b56228
+
+	measure 'Last Trading Date' =
+			
+			CALCULATE ( MAX ( 'gold dim_date'[date] ), 'gold fact_market_daily')
+		formatString: General Date
+		lineageTag: 29a0bfc4-9434-401e-807f-a2e9209f67f4
+
+	measure 'First Trading Date' =
+			
+			CALCULATE ( MIN ( 'gold dim_date'[date] ), 'gold fact_market_daily' )
+		formatString: General Date
+		lineageTag: c1af492c-50c3-460b-8b7d-bd86aff801bd
+
+	measure 'Number of Stocks' =
+			
+			DISTINCTCOUNT ( 'gold fact_market_daily'[company_key] )
+		formatString: 0
+		lineageTag: 3cb24f2e-36da-4415-ac6b-54d5042633fb
+
+	measure 'Selected Stock' =
+			
+			SELECTEDVALUE ( 'gold dim_company'[ticker], "All stocks" )
+		lineageTag: 16f4418c-740c-4bd4-802f-c77d3bc08a80
+
+	measure 'Compare Stock' =
+			
+			SELECTEDVALUE ( CompareStock[Compare ticker], "None" )
+		lineageTag: 9e8af62d-8208-4b23-84b1-3a4e380d81b3
+
+	measure 'Period Label' =
+			
+			FORMAT ( [First Trading Date], "mmm yyyy" ) & " to " & FORMAT ( [Last Trading Date], "mmm yyyy" )
+		lineageTag: 79144c54-6f89-4346-b5b3-7e4bb028a670
+
+	measure 'Growth Title' =
+			
+			"Growth of 100 invested in " & FORMAT ( [First Trading Date], "mmmm yyyy" )
+		lineageTag: 35e392f0-5ffb-4a6e-b0e1-a5391de58e3c
+
+	measure 'EW Value' =
+			
+			VAR d = [Last Trading Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( 'gold fact_portfolio_daily'[value_index]),
+			        'gold dim_portfolio'[portfolio_id] = 1,
+			        'gold dim_date'[date] = d
+			    )
+		lineageTag: 038be3b9-7f9e-4cd0-b684-5a0ff352fd1b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Return' =
+			
+			CALCULATE (
+			    PRODUCTX ( 'gold fact_portfolio_daily', 1 + 'gold fact_portfolio_daily'[daily_return] ) - 1,
+			    'gold dim_portfolio'[portfolio_id]= 1
+			)
+		lineageTag: 187e4e73-adda-42f0-950f-527956860d4a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Volatility' =
+			
+			CALCULATE (
+			    STDEV.S ( 'gold fact_portfolio_daily'[daily_return] ) * SQRT ( 252 ),
+			    'gold dim_portfolio'[portfolio_id] = 1
+			)
+		lineageTag: caecaecb-2c51-4550-a4ce-4be4bd22c904
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Max Drawdown' =
+			
+			CALCULATE (
+			    MIN ( 'gold fact_portfolio_daily'[drawdown] ),
+			    'gold dim_portfolio'[portfolio_id] = 1
+			)
+		lineageTag: cb5e1bd2-90d1-49e1-9376-8deb81f602c1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Sharpe' =
+			
+			DIVIDE (
+			    CALCULATE (
+			        AVERAGE ( 'gold fact_portfolio_daily'[daily_return] ),
+			        'gold dim_portfolio'[portfolio_id] = 1
+			    ) * 252,
+			    [EW Volatility]
+			)
+		lineageTag: 10b0b99a-2dc5-4567-9ece-ea885b767e23
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Growth of 100' =
+			
+			CALCULATE (
+			    SUM ( 'gold fact_portfolio_daily'[value_index] ),
+			    'gold dim_portfolio'[portfolio_id] = 1
+			)
+		lineageTag: de950c04-60b1-4f55-89ba-55a908906a08
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Drawdown' =
+			
+			CALCULATE (
+			    SUM ( 'gold fact_portfolio_daily'[drawdown] ),
+			    'gold dim_portfolio'[portfolio_id] = 1
+			)
+		lineageTag: b01531d1-892f-4f85-9e11-cf720b89666c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Stock Volatility 20d' =
+			
+			CALCULATE ( AVERAGE ( 'gold fact_market_daily'[vol_20d_ann] ), REMOVEFILTERS ( 'gold dim_company' ) )
+		lineageTag: fae99600-7705-45ff-b436-96b5b7ecfc89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Return PY' =
+			
+			CALCULATE ( [EW Return], SAMEPERIODLASTYEAR ( 'gold dim_date'[date] ) )
+		lineageTag: ab8a17ab-f958-4e38-8c9a-4ffa05557261
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Return vs PY' =
+			
+			VAR py = [EW Return PY]
+			RETURN IF ( NOT ISBLANK ( py ), [EW Return] - py )
+		lineageTag: 891c1e70-c85d-488e-a26e-56239c39849a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Volatility PY' =
+			
+			CALCULATE ( [EW Volatility], SAMEPERIODLASTYEAR ( 'gold dim_date'[date] ) )
+		lineageTag: c7a435b2-0561-49c6-b555-0166826c9472
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EW Volatility vs PY' =
+			
+			VAR py = [EW Volatility PY]
+			RETURN IF ( NOT ISBLANK ( py ), [EW Volatility] - py )
+		lineageTag: 76e5b6c0-1e54-4861-8e5e-169f2bc3ae8a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Return' =
+			
+			AVERAGEX (
+			    VALUES ( 'gold dim_company'[ticker] ),
+			    CALCULATE ( PRODUCTX ( 'gold fact_market_daily', 1 + 'gold fact_market_daily'[return] ) - 1 )
+			)
+		lineageTag: b5155d0c-bab3-498d-90cc-2ddd6e629d07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Volatility (period)' =
+			
+			AVERAGEX (
+			    VALUES ( 'gold dim_company'[ticker] ),
+			    CALCULATE ( STDEV.S ( 'gold fact_market_daily'[return] ) * SQRT ( 252 ) )
+			)
+		lineageTag: 250aec06-c355-46b6-bf0e-57e680821b2c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Vol 20d' =
+			
+			AVERAGE ( 'gold fact_market_daily'[vol_20d_ann] )
+		lineageTag: 959e8ffb-6e6f-4fcb-a37e-6608a6a03b9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Vol 63d' =
+			
+			AVERAGE ( 'gold fact_market_daily'[vol_63d_ann] )
+		lineageTag: 3674fca2-c794-4a9c-b689-8456a922e227
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Drawdown =
+			
+			AVERAGE ( 'gold fact_market_daily'[drawdown] )
+		lineageTag: 1a2d34c6-2fc0-4923-be1e-328b46fcfb1f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Stock Growth of 100' =
+			
+			100 * ( 1 + AVERAGE ( 'gold fact_market_daily'[cumulative_return] ) )
+		lineageTag: db2bf4f5-0656-4a35-a7d7-2191cdd5054f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Close =
+			
+			AVERAGE ( 'gold fact_market_daily'[close] )
+		lineageTag: 71f9e78c-fe77-4846-8380-503b6ccfa665
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MA50 =
+			
+			AVERAGE ( 'gold fact_market_daily'[ma50] )
+		lineageTag: efe5ffb2-4502-43f8-8f14-ef85dd4f25c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MA200 =
+			
+			AVERAGE ( 'gold fact_market_daily'[ma200] )
+		lineageTag: 8cc02473-dcdd-40c6-b3cd-65cd2dfc3e6d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Volume =
+			
+			SUM ( 'gold fact_market_daily'[volume] )
+		formatString: 0
+		lineageTag: d9d6fd7f-c5cb-4fbf-bbd7-6a7f79af4e55
+
+	measure 'Volume MA20' =
+			
+			AVERAGE ( 'gold fact_market_daily'[volume_ma20] )
+		lineageTag: 66818c1b-52a7-4697-9fe5-ada3437faaad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Latest Vol 20d' =
+			
+			VAR d = [Last Trading Date]
+			RETURN CALCULATE ( AVERAGE ( 'gold fact_market_daily'[vol_20d_ann] ), 'gold dim_date'[date] = d )
+		lineageTag: cccb239d-45b3-4200-bf0a-ab6115114ae4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Compare Drawdown' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_market_daily'[drawdown] ),
+			    REMOVEFILTERS ( 'gold dim_company' ),
+			    TREATAS ( VALUES ( CompareStock[Compare ticker] ), 'gold dim_company'[ticker] )
+			)
+		lineageTag: c4994223-d652-4be6-baf1-21eae5558793
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Compare Vol 20d' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_market_daily'[vol_20d_ann] ),
+			    REMOVEFILTERS ( 'gold dim_company' ),
+			    TREATAS ( VALUES ( CompareStock[Compare ticker] ), 'gold dim_company'[ticker] )
+			)
+		lineageTag: 2393003b-20e4-4e5e-8f61-4e8870c60fdf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Annualized Volatility' =
+			
+			AVERAGE ( 'gold fact_risk_summary'[annualized_volatility] )
+		lineageTag: 0c095777-248f-48a3-88ab-f21509187dfc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Drawdown' =
+			
+			MIN ( 'gold fact_risk_summary'[max_drawdown] )
+		lineageTag: da35087f-d0a5-4636-a13d-fe5b42ec3d99
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sharpe Ratio' =
+			
+			AVERAGE ( 'gold fact_risk_summary'[sharpe_ratio] )
+		lineageTag: ce82752d-7e38-440d-8233-5c3466e72d15
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'VaR 95' =
+			
+			AVERAGE ( 'gold fact_risk_summary'[var_95_hist] )
+		lineageTag: 81418a84-10c0-44f0-ae89-b65dab7ca1a2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'VaR 99' =
+			
+			AVERAGE ( 'gold fact_risk_summary'[var_99_hist] )
+		lineageTag: 184222c8-d26a-451a-8641-7c3a6112b6ec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Beta =
+			
+			AVERAGE ( 'gold fact_risk_summary'[beta] )
+		lineageTag: c31fda2c-d194-48a5-a236-9d39ba6d1642
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Volatility Rank' =
+			
+			RANKX ( ALL ( 'gold dim_company'[ticker] ), [Annualized Volatility], , DESC, DENSE )
+		formatString: 0
+		lineageTag: a9a40fc1-20df-4dac-93e5-20b34e816c07
+
+	measure 'Monthly Vol 20d' =
+			
+			AVERAGE ( 'gold fact_risk_monthly'[vol_20d_ann] )
+		lineageTag: a45e8f95-c01a-4386-b646-90a8eedcb596
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Month-end Drawdown' =
+			
+			AVERAGE ( 'gold fact_risk_monthly'[drawdown_eom] )
+		lineageTag: 59740ade-c9ca-4e94-849e-a10bd841aaeb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Worst Drawdown in Month' =
+			
+			MIN ( 'gold fact_risk_monthly'[max_drawdown_in_month] )
+		lineageTag: 154c8973-d354-45db-892f-d68f3912b1b9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Monthly Return' =
+			
+			AVERAGE ( 'gold fact_risk_monthly'[monthly_return] )
+		lineageTag: 4c769c11-2707-4e8b-97a4-b1099c2b488b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Correlation Full' =
+			
+			CALCULATE (
+			    AVERAGE ('gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "full"
+			)
+		lineageTag: 269adbb8-3579-4288-970c-e31b26e0d359
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Correlation Rolling' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "rolling_60d"
+			)
+		lineageTag: a20fb231-1675-472f-bac3-ab3a4206a3ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Pairwise Correlation Full' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "full",
+			    FILTER ( 'gold fact_correlation_pairs', 'gold fact_correlation_pairs'[company_key] < 'gold fact_correlation_pairs'[peer_company_key] )
+			)
+		lineageTag: a11d6033-786e-4bbd-81bf-ed7077ecae15
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Pairwise Correlation Rolling' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "rolling_60d",
+			    FILTER ( 'gold fact_correlation_pairs', 'gold fact_correlation_pairs'[company_key] < 'gold fact_correlation_pairs'[peer_company_key] )
+			)
+		lineageTag: 1270438e-af8e-4ae3-b0b3-ef0f7afc0c7b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Correlation Same Sector' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "full",
+			    FILTER (
+			        'gold fact_correlation_pairs',
+			        'gold fact_correlation_pairs'[company_key] < 'gold fact_correlation_pairs'[peer_company_key]
+			            && RELATED ( 'gold dim_company'[sector] ) = RELATED ( 'gold dim_company_peer'[sector] )
+			    )
+			)
+		lineageTag: 1b936554-71a2-42d8-8e15-c9888e5d03d1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Correlation Different Sector' =
+			
+			CALCULATE (
+			    AVERAGE ( 'gold fact_correlation_pairs'[correlation] ),
+			    'gold fact_correlation_pairs'[window_type] = "full",
+			    FILTER (
+			        'gold fact_correlation_pairs',
+			        'gold fact_correlation_pairs'[company_key] < 'gold fact_correlation_pairs'[peer_company_key]
+			            && RELATED ( 'gold dim_company'[sector] ) <> RELATED ( 'gold dim_company_peer'[sector] )
+			    )
+			)
+		lineageTag: 677b4ce2-136d-4cdc-8b41-8977d27a5c07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Value' =
+			
+			VAR d = [Last Trading Date]
+			RETURN CALCULATE ( SUM ( 'gold fact_portfolio_daily'[value_index] ), 'gold dim_date'[date] = d )
+		lineageTag: 814a0192-5d72-49b5-9d35-e6c06a1cf852
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Return' =
+			
+			AVERAGEX (
+			    VALUES ( 'gold dim_portfolio'[portfolio_id] ),
+			    CALCULATE ( PRODUCTX ( 'gold fact_portfolio_daily', 1 + 'gold fact_portfolio_daily'[daily_return] ) - 1 )
+			)
+		lineageTag: 5396c846-73a5-4bd7-a229-f47c6ca39135
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Volatility' =
+			
+			AVERAGEX (
+			    VALUES ( 'gold dim_portfolio'[portfolio_id] ),
+			    CALCULATE ( STDEV.S ( 'gold fact_portfolio_daily'[daily_return] ) * SQRT ( 252 ) )
+			)
+		lineageTag: a88efeed-d765-46fc-aa77-587b45b5ec3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Max Drawdown' =
+			
+			MIN ( 'gold fact_portfolio_daily'[drawdown] )
+		lineageTag: e8f30115-e3b8-4d55-aad8-fb6594baf1c2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Sharpe' =
+			
+			AVERAGEX (
+			    VALUES ( 'gold dim_portfolio'[portfolio_id] ),
+			    CALCULATE ( DIVIDE ( AVERAGE ( 'gold fact_portfolio_daily'[daily_return] ) * 252,
+			                         STDEV.S ( 'gold fact_portfolio_daily'[daily_return] ) * SQRT ( 252 ) ) )
+			)
+		lineageTag: e2af4b5f-ea6c-4860-83fb-5d043275550d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Growth' =
+			
+			SUM ( 'gold fact_portfolio_daily'[value_index] )
+		lineageTag: 6f07349b-21f4-42f1-804c-9e18091e3655
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Drawdown' =
+			
+			SUM ( 'gold fact_portfolio_daily'[drawdown] )
+		lineageTag: c1c8fd3a-ff35-4f2c-9855-0fdffe140cd8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Weight' =
+			
+			SUM ( 'gold fact_portfolio_weights'[weight] )
+		lineageTag: f36f5d32-bd4d-49c5-aef3-60bb6b4afcfa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Ann Return (table)' =
+			
+			AVERAGE ( 'gold fact_portfolio_metrics'[ann_return] )
+		lineageTag: 0af30c09-ac68-4e11-89cd-ee2c0e2643e1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio Ann Vol (table)' =
+			
+			AVERAGE ('gold fact_portfolio_metrics'[ann_vol] )
+		lineageTag: f81d2857-d31e-4cac-b8da-e2456fb3f14c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Portfolio VaR 95 (table, positive loss)' =
+			
+			-AVERAGE ( 'gold fact_portfolio_metrics'[var_95_hist] )
+		lineageTag: 2f8b1f26-0b2f-4cf1-9265-84c324873d03
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Articles =
+			
+			COUNTROWS ( 'gold fact_news_tickers' )
+		formatString: 0
+		lineageTag: 9590f5ad-6695-4ea7-ab31-01b85ab061e2
+
+	measure 'Focused Articles' =
+			
+			CALCULATE ( COUNTROWS ( 'gold fact_news_tickers' ), 'gold fact_news_tickers'[is_focused] = TRUE () )
+		formatString: 0
+		lineageTag: 6a165897-66a4-4fce-9160-a30050e19e67
+
+	measure 'Focused Share' =
+			
+			DIVIDE ( [Focused Articles], [Articles] )
+		lineageTag: 281f14ae-3025-4350-8285-e5f303affc9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Sentiment' =
+			
+			AVERAGEX ( 'gold fact_news_tickers', RELATED ( 'gold fact_article_sentiment'[finbert_score] ) )
+		lineageTag: fb6e537a-afbd-4026-980f-e05a9a2bfab7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Sentiment Focused' =
+			
+			CALCULATE ( [Avg Sentiment], 'gold fact_news_tickers'[is_focused] = TRUE () )
+		lineageTag: ef6b4274-671e-44f7-b2ed-32c00ed649e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Positive Share' =
+			
+			DIVIDE ( CALCULATE ( COUNTROWS ( 'gold fact_news_tickers' ), 'gold fact_article_sentiment'[finbert_label] = "positive" ), [Articles] )
+		lineageTag: 527b56ca-4d0d-4e61-b0f9-eb6ba5bd0507
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Neutral Share' =
+			
+			DIVIDE ( CALCULATE ( COUNTROWS ( 'gold fact_news_tickers' ), 'gold fact_article_sentiment'[finbert_label] = "neutral" ), [Articles] )
+		lineageTag: cbc36587-177f-4709-8969-d09525a94791
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Negative Share' =
+			
+			DIVIDE ( CALCULATE ( COUNTROWS ( 'gold fact_news_tickers' ), 'gold fact_article_sentiment'[finbert_label] = "negative" ), [Articles] )
+		lineageTag: b4e8326e-a3dd-4eac-9a27-d3f8a6b24eb9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Return Reaction Day' =
+			
+			AVERAGE ( 'gold fact_news_tickers'[ret_reaction_day] )
+		lineageTag: 6794e897-3d74-43d3-9c8e-0c1afe28bb00
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Return Next Day' =
+			
+			AVERAGE ( 'gold fact_news_tickers'[ret_next_day] )
+		lineageTag: baf6c695-f7fb-400b-a477-d32c8ff37111
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Gap Positive vs Negative' =
+			
+			CALCULATE ( [Avg Return Reaction Day], 'gold fact_article_sentiment'[finbert_label] = "positive" )
+			    - CALCULATE ( [Avg Return Reaction Day], 'gold fact_article_sentiment'[finbert_label] = "negative" )
+		lineageTag: 1a8869ac-ac67-437c-b676-ef7b2d0e3160
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Gap Next Day' =
+			
+			CALCULATE ( [Avg Return Next Day], 'gold fact_article_sentiment'[finbert_label] = "positive" )
+			    - CALCULATE ( [Avg Return Next Day], 'gold fact_article_sentiment'[finbert_label] = "negative" )
+		lineageTag: 77a07375-53bb-43a9-bf31-1b2fc2425484
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Events =
+			
+			CALCULATE ( COUNTROWS ( 'gold fact_events' ), 'gold fact_events'[is_earnings_duplicate] = FALSE () )
+		formatString: 0
+		lineageTag: 1991c2c2-437f-4121-86ee-912840c0d384
+
+	measure 'Avg Day-0 Return' =
+			
+			AVERAGE ( 'gold fact_events'[ret_d0] )
+		lineageTag: c0ef09f5-3ac8-40e6-8909-9582b77161cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Abs Day-0 Move' =
+			
+			AVERAGEX ( 'gold fact_events', ABS ( 'gold fact_events'[ret_d0] ) )
+		lineageTag: fea2a1ff-e06e-4318-8863-76f2c3cd902b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Abnormal Return D0' =
+			
+			AVERAGE ( 'gold fact_events'[abn_d0] )
+		lineageTag: 1b477e44-00e3-419c-b952-47425f5b8d6b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg CAR (-1 to +1)' =
+			
+			AVERAGE ( 'gold fact_events'[car_m1_p1] )
+		lineageTag: a3e3550e-0574-451f-956c-8ce2d340cc2a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Volume Ratio D0' =
+			
+			AVERAGE ( 'gold fact_events'[volume_ratio_d0] )
+		lineageTag: 0bff0c8b-4c02-436b-bef9-40dec6999d76
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg EPS Surprise %' =
+			
+			AVERAGE ( 'gold fact_events'[surprise_pct] )
+		lineageTag: 4cd34085-0582-40b3-8e02-0f540d7ca68b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CAR After Positive Surprise' =
+			
+			CALCULATE ( AVERAGE ( 'gold fact_events'[car_m1_p1] ), 'gold fact_events'[surprise_pct] > 0 )
+		lineageTag: f621df7b-020e-4347-938c-2b796681a7e8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CAR After Negative Surprise' =
+			
+			CALCULATE ( AVERAGE ( 'gold fact_events'[car_m1_p1] ), 'gold fact_events'[surprise_pct] < 0 )
+		lineageTag: 471ca1f6-372e-49d1-8e67-1151e62d1e85
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Return Day -1' =
+			
+			AVERAGE ( 'gold fact_events'[ret_m1] )
+		lineageTag: f3281caf-3573-4184-8cc0-2a5f27fd9802
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Return Day +1' =
+			
+			AVERAGE ( 'gold fact_events'[ret_p1] )
+		lineageTag: 0e23f3bb-24d9-4822-b440-0c24bd13e3a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Return Day +2' =
+			
+			AVERAGE ( 'gold fact_events'[ret_p2] )
+		lineageTag: 4c8d745e-f150-4659-a95c-bb133b1f65a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Best Performer' =
+			
+			CONCATENATEX ( TOPN ( 1, VALUES ( 'gold dim_company'[ticker] ), [Total Return], DESC ), 'gold dim_company'[ticker], ", " )
+		lineageTag: 321f1f27-7489-4f88-aae4-26a40f991e41
+
+	measure 'Best Performer Return' =
+			
+			MAXX ( TOPN ( 1, VALUES ( 'gold dim_company'[ticker] ), [Total Return], DESC ), [Total Return] )
+		lineageTag: 907fc838-497d-4db7-859d-55b0ed7b6bda
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Calmest Stock' =
+			
+			CONCATENATEX ( TOPN ( 1, VALUES ( 'gold dim_company'[ticker] ), [Annualized Volatility], ASC ), 'gold dim_company'[ticker], ", " )
+		lineageTag: 36e5c1e2-02b0-423a-8a09-c5841e64406a
+
+	measure 'Calmest Stock Volatility' =
+			
+			MINX ( VALUES ( 'gold dim_company'[ticker] ), [Annualized Volatility] )
+		lineageTag: 3e355b22-8b32-497e-8e0a-58facd994d1c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hero Subtitle' =
+			
+			"Best: " & [Best Performer] & " " & FORMAT ( [Best Performer Return], "+#,0%;-#,0%" )
+			    & " | Calmest: " & [Calmest Stock] & ", " & FORMAT ( [Calmest Stock Volatility], "0.0%" ) & " volatility"
+		lineageTag: 528be3f8-8576-46fe-bdda-979fc5e6c4c6
+
+	measure 'Most Correlated Pair' =
+			
+			VAR t =
+			    TOPN (
+			        1,
+			        FILTER (
+			            CALCULATETABLE ( 'gold fact_correlation_pairs', 'gold fact_correlation_pairs'[window_type] = "full" ),
+			            'gold fact_correlation_pairs'[company_key] < 'gold fact_correlation_pairs'[peer_company_key]
+			        ),
+			        'gold fact_correlation_pairs'[correlation], DESC
+			    )
+			RETURN
+			    MAXX (
+			        t,
+			        RELATED ( 'gold dim_company'[ticker] ) & "-" & RELATED ( 'gold dim_company_peer'[ticker] )
+			            & " (" & FORMAT ( 'gold fact_correlation_pairs'[correlation], "0.00" ) & ")"
+			    )
+		lineageTag: 63175135-f296-4cc3-a995-a0bfe3f24d56
+
+	measure 'Revenue ($B)' =
+			
+			DIVIDE ( SUM ( 'gold fact_fundamentals'[revenue] ), 1000000000 )
+		lineageTag: cb72c849-18e7-4548-a7a8-7b9b80ac20d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Income ($B)' =
+			
+			DIVIDE ( SUM ( 'gold fact_fundamentals'[net_income] ), 1000000000 )
+		lineageTag: bab3dcf4-2fd3-4d23-b894-b142eef43b23
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Assets ($B)' =
+			
+			VAR d = MAX ( 'gold fact_fundamentals'[period_end] )
+			RETURN DIVIDE ( CALCULATE ( SUM ( 'gold fact_fundamentals'[total_assets] ), 'gold fact_fundamentals'[period_end] = d ), 1000000000 )
+		lineageTag: 11afc873-6be4-433c-9385-98e6846fdf78
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Equity ($B)' =
+			
+			VAR d = MAX ( 'gold fact_fundamentals'[period_end] )
+			RETURN DIVIDE ( CALCULATE ( SUM ( 'gold fact_fundamentals'[equity] ), 'gold fact_fundamentals'[period_end] = d ), 1000000000 )
+		lineageTag: 73504d86-ed3d-4206-b610-4dd155ff1f0d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Margin' =
+			
+			AVERAGE ( 'gold fact_fundamentals'[profit_margin] )
+		lineageTag: 02e039f8-a626-48ce-a382-15b5f475544f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: a7ff9e49-3019-4f02-a37a-eb7179aacd88
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = fb87b8c102e14ba4b354fbf2bada93d2
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

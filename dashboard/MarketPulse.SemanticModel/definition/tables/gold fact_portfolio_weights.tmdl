@@ -1,0 +1,45 @@
+table 'gold fact_portfolio_weights'
+	lineageTag: 017e5eda-154c-4b92-a082-a30fe11d5b35
+
+	column portfolio_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 06b9663b-9a4b-45cc-861d-cac182f95f90
+		summarizeBy: none
+		sourceColumn: portfolio_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: dec00ac7-4e0f-461b-b21c-e8c8d0d607b9
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column weight
+		dataType: double
+		lineageTag: a6e28242-286a-46d9-b1f4-76179db6048d
+		summarizeBy: sum
+		sourceColumn: weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'gold fact_portfolio_weights' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_portfolio_weights = Source{[Schema="gold",Item="fact_portfolio_weights"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_portfolio_weights,{"gold.dim_company", "gold.dim_portfolio"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

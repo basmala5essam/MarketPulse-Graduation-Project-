@@ -1,0 +1,101 @@
+table 'gold dim_date'
+	lineageTag: 5d6d089b-0ae8-4afa-9f6b-d3e25b776644
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d32513c8-e5bc-4703-a939-f8d1327323ad
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 277a3fd4-37d1-4eee-b315-df880cdac41a
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f0ebcca-c963-46cc-a98e-653768f01088
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e6f3d0d-787f-4d94-8b5c-87fa99a56e35
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: f242ab9f-ed72-457a-95fb-66dcad1bace6
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: af454db2-cc4d-4f5d-80d9-87f818d7cf5e
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: 1e0f8c6e-ccfc-4ba7-bbdb-0fdb50397dab
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_trading_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8afc6a6e-967e-4fe5-bd03-afb99db5f087
+		summarizeBy: none
+		sourceColumn: is_trading_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_end_trading_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ae5edf56-7991-49d3-9f75-0837cc9b4a54
+		summarizeBy: none
+		sourceColumn: is_month_end_trading_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_date' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_dim_date = Source{[Schema="gold",Item="dim_date"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_dim_date,{"gold.fact_article_sentiment", "gold.fact_benchmark_prices", "gold.fact_correlation_pairs", "gold.fact_event_study", "gold.fact_events(date_key)", "gold.fact_events(date_key) 2", "gold.fact_fundamentals(date_key)", "gold.fact_fundamentals(date_key) 2", "gold.fact_market_features", "gold.fact_market_prices", "gold.fact_news_tickers(date_key)", "gold.fact_news_tickers(date_key) 2", "gold.fact_portfolio_daily", "gold.fact_risk_daily", "gold.fact_risk_monthly"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"year", Int64.Type}, {"quarter", Int64.Type}, {"month_number", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

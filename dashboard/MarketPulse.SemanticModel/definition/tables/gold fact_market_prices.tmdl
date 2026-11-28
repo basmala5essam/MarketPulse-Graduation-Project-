@@ -1,0 +1,102 @@
+table 'gold fact_market_prices'
+	lineageTag: 92206fbf-dd97-4f49-9c59-cee7bdc4edc9
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 347ac9ed-6c19-4ad0-a775-67dfe272cf13
+		summarizeBy: sum
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ae6b622-be1f-4322-8dbd-18bb19db33df
+		summarizeBy: sum
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column open
+		dataType: double
+		lineageTag: c5b319d7-8b6b-4773-9e59-d8cecd644a45
+		summarizeBy: sum
+		sourceColumn: open
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high
+		dataType: double
+		lineageTag: ff12b9b7-4701-4ee0-96ee-47a14e7dbfd4
+		summarizeBy: sum
+		sourceColumn: high
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low
+		dataType: double
+		lineageTag: 2a178ae8-a5ce-4de4-aec3-1f28879bf98a
+		summarizeBy: sum
+		sourceColumn: low
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column close
+		dataType: double
+		lineageTag: 8771623b-a1aa-46ed-b47d-ce6ef15d9beb
+		summarizeBy: sum
+		sourceColumn: close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume
+		dataType: int64
+		formatString: 0
+		lineageTag: af1b1240-7d1e-455c-83a0-3a9604d9bfdd
+		summarizeBy: sum
+		sourceColumn: volume
+
+		annotation SummarizationSetBy = Automatic
+
+	column return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 84cd220b-ddbe-4116-8f8c-af7aa11e8906
+		summarizeBy: sum
+		sourceColumn: return
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_day_return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d9fb5f6e-8d63-4adc-834c-c29b1f7fe69a
+		summarizeBy: sum
+		sourceColumn: next_day_return
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_market_prices' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_market_prices = Source{[Schema="gold",Item="fact_market_prices"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_market_prices,{"gold.dim_company", "gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

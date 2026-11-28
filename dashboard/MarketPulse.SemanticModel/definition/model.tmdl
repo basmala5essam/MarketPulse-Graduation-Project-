@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["gold dim_company","gold dim_date","gold dim_portfolio","gold fact_article_sentiment","gold fact_correlation_pairs","gold fact_event_study","gold fact_events","gold fact_fundamentals","gold fact_market_features","gold fact_market_prices","gold fact_news_tickers","gold fact_portfolio_daily","gold fact_portfolio_metrics","gold fact_portfolio_weights","gold fact_risk_daily","gold fact_risk_monthly","gold fact_risk_summary","gold fact_benchmark_prices","gold dim_company_peer","gold fact_market_daily"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"bbd65b02-4e78-4dff-8376-0e52fa4ce520","fromColumnLocalLineageTag":"5615deca-4b7b-43b4-ba89-741b0bdc4907","toTableLocalLineageTag":"e66be76f-a6bf-49c8-bd7c-b16cf8e9b429","toColumnLocalLineageTag":"b48c33d2-9ce7-477c-af6f-01e6e22fbb31"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"bbd65b02-4e78-4dff-8376-0e52fa4ce520","fromColumnLocalLineageTag":"bd47dc41-5480-4ca2-8bb5-ef23a20a0acd","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"24bec18e-b9da-42f1-9648-83af7c8eb323","fromColumnLocalLineageTag":"1ceb401a-d946-4a5f-ab35-878267d67ca4","toTableLocalLineageTag":"e66be76f-a6bf-49c8-bd7c-b16cf8e9b429","toColumnLocalLineageTag":"b48c33d2-9ce7-477c-af6f-01e6e22fbb31"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"24bec18e-b9da-42f1-9648-83af7c8eb323","fromColumnLocalLineageTag":"9c0561ad-36d8-47ad-add8-bc14ade9157d","toTableLocalLineageTag":"5d6d089b-0ae8-4afa-9f6b-d3e25b776644","toColumnLocalLineageTag":"d32513c8-e5bc-4703-a939-f8d1327323ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"24bec18e-b9da-42f1-9648-83af7c8eb323","fromColumnLocalLineageTag":"1ceb401a-d946-4a5f-ab35-878267d67ca4","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"e4db76e1-7efa-4206-b820-c0a2b40e0941","fromColumnLocalLineageTag":"8735d4bb-5976-46b1-9608-28ad152e7764","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"e4db76e1-7efa-4206-b820-c0a2b40e0941","fromColumnLocalLineageTag":"73faa8b6-5601-4e78-a0c4-0455701fdc90","toTableLocalLineageTag":"24bec18e-b9da-42f1-9648-83af7c8eb323","toColumnLocalLineageTag":"ce83c618-6cb1-4176-8ee4-0b65ee534374"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"1c99f2ce-e394-4374-a495-84e6c542800e","fromColumnLocalLineageTag":"bf02562a-6a11-4b6e-84d4-3bf93e70560f","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"657eb54b-4160-4e78-b5f5-913a7051b6d2","fromColumnLocalLineageTag":"a80a4a33-ab82-466a-8115-5d097073e985","toTableLocalLineageTag":"e66be76f-a6bf-49c8-bd7c-b16cf8e9b429","toColumnLocalLineageTag":"b48c33d2-9ce7-477c-af6f-01e6e22fbb31"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"657eb54b-4160-4e78-b5f5-913a7051b6d2","fromColumnLocalLineageTag":"07a8f083-c369-48bc-9203-3947594ee4b6","toTableLocalLineageTag":"5d6d089b-0ae8-4afa-9f6b-d3e25b776644","toColumnLocalLineageTag":"d32513c8-e5bc-4703-a939-f8d1327323ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"657eb54b-4160-4e78-b5f5-913a7051b6d2","fromColumnLocalLineageTag":"a80a4a33-ab82-466a-8115-5d097073e985","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"92206fbf-dd97-4f49-9c59-cee7bdc4edc9","fromColumnLocalLineageTag":"347ac9ed-6c19-4ad0-a775-67dfe272cf13","toTableLocalLineageTag":"e66be76f-a6bf-49c8-bd7c-b16cf8e9b429","toColumnLocalLineageTag":"b48c33d2-9ce7-477c-af6f-01e6e22fbb31"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"92206fbf-dd97-4f49-9c59-cee7bdc4edc9","fromColumnLocalLineageTag":"7ae6b622-be1f-4322-8dbd-18bb19db33df","toTableLocalLineageTag":"5d6d089b-0ae8-4afa-9f6b-d3e25b776644","toColumnLocalLineageTag":"d32513c8-e5bc-4703-a939-f8d1327323ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"92206fbf-dd97-4f49-9c59-cee7bdc4edc9","fromColumnLocalLineageTag":"347ac9ed-6c19-4ad0-a775-67dfe272cf13","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"0a51ce50-5f2a-45e4-9fd3-97f9ee289958","fromColumnLocalLineageTag":"f9ff0708-74c0-4fa1-b16e-f8e4b6269fe7","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"017e5eda-154c-4b92-a082-a30fe11d5b35","fromColumnLocalLineageTag":"dec00ac7-4e0f-461b-b21c-e8c8d0d607b9","toTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","toColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"05bbe2fd-8fbe-4d68-b1be-1ee54d5d6736","fromColumnLocalLineageTag":"1242d7ee-6eed-494c-9d01-225f955f3836","toTableLocalLineageTag":"5d6d089b-0ae8-4afa-9f6b-d3e25b776644","toColumnLocalLineageTag":"d32513c8-e5bc-4703-a939-f8d1327323ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"0e214065-b87d-4110-a96b-664aacd268c7","fromColumnLocalLineageTag":"e45bde13-b6ac-45a4-8348-fa1857628871","toTableLocalLineageTag":"5d6d089b-0ae8-4afa-9f6b-d3e25b776644","toColumnLocalLineageTag":"d32513c8-e5bc-4703-a939-f8d1327323ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"4aba5255-e7ad-494d-b0b9-f314509939ea","fromColumnLocalLineageTag":"d6f92a4b-614d-4a45-9799-ae9ec0bed0c5","toTableLocalLineageTag":"a42ac081-aba7-4267-91a6-93bca68bd0ab","toColumnLocalLineageTag":"9ddf4cda-85a9-4496-a049-1bb714d02d45"}},"objectType":"Relationship"}]
+
+ref table 'gold dim_company'
+ref table 'gold dim_date'
+ref table 'gold dim_portfolio'
+ref table 'gold fact_article_sentiment'
+ref table 'gold fact_correlation_pairs'
+ref table 'gold fact_event_study'
+ref table 'gold fact_events'
+ref table 'gold fact_fundamentals'
+ref table 'gold fact_market_features'
+ref table 'gold fact_market_prices'
+ref table 'gold fact_news_tickers'
+ref table 'gold fact_portfolio_daily'
+ref table 'gold fact_portfolio_metrics'
+ref table 'gold fact_portfolio_weights'
+ref table 'gold fact_risk_daily'
+ref table 'gold fact_risk_monthly'
+ref table 'gold fact_risk_summary'
+ref table 'gold fact_benchmark_prices'
+ref table 'gold dim_company_peer'
+ref table 'gold fact_market_daily'
+ref table CompareStock
+ref table _Measures
+
+ref cultureInfo en-US
+

@@ -1,0 +1,53 @@
+table 'gold fact_benchmark_prices'
+	lineageTag: 0e214065-b87d-4110-a96b-664aacd268c7
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e45bde13-b6ac-45a4-8348-fa1857628871
+		summarizeBy: sum
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column benchmark_symbol
+		dataType: string
+		lineageTag: 239e4774-1bb3-45d1-b021-8ba6328ac5ae
+		summarizeBy: none
+		sourceColumn: benchmark_symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column close
+		dataType: double
+		lineageTag: 0f557d0b-8ce5-4da9-96c8-f047db57da5b
+		summarizeBy: sum
+		sourceColumn: close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 56832ade-4f79-4980-bc6c-3f8f6eee24de
+		summarizeBy: sum
+		sourceColumn: return
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_benchmark_prices' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_benchmark_prices = Source{[Schema="gold",Item="fact_benchmark_prices"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_benchmark_prices,{"gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

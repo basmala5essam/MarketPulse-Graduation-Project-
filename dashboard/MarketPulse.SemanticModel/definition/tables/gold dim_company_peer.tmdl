@@ -1,0 +1,73 @@
+table 'gold dim_company_peer'
+	lineageTag: 4aba5255-e7ad-494d-b0b9-f314509939ea
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d6f92a4b-614d-4a45-9799-ae9ec0bed0c5
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker
+		dataType: string
+		lineageTag: 0deab7ea-7217-4aad-9771-ec5745f7d88f
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: ce778cc4-bb03-422b-a04f-82044fe477c0
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 57d67935-09cf-45fd-b6d4-c93604295b7e
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry
+		dataType: string
+		lineageTag: ea22aefb-cf66-4f35-8366-568fbb828e25
+		summarizeBy: none
+		sourceColumn: industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 73d5da04-a139-4b83-8d4d-09a576f5ed13
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cik
+		dataType: int64
+		formatString: 0
+		lineageTag: cf6bad0a-d02a-47ee-82b0-9bdfb5cedbc9
+		summarizeBy: none
+		sourceColumn: cik
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_company_peer' = m
+		mode: import
+		source =
+				let
+				    Source = #"gold dim_company"
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

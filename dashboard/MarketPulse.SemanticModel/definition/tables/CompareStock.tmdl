@@ -1,0 +1,17 @@
+table CompareStock
+	lineageTag: 1acb4bec-538d-4715-9964-53a6a7bf4299
+
+	column 'Compare ticker'
+		lineageTag: 04650448-77ed-4b98-9a45-31f81dc876f4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Compare ticker]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CompareStock = calculated
+		mode: import
+		source = SELECTCOLUMNS ( 'gold dim_company', "Compare ticker", 'gold dim_company'[ticker] )
+
+	annotation PBI_Id = 98bbce7848144f17811bc4803faf89a9
+

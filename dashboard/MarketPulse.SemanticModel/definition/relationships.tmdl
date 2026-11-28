@@ -1,0 +1,137 @@
+relationship 0fddba19-612f-56bb-ff2e-feb5bb4c2f83
+	fromColumn: 'gold fact_market_daily'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+relationship c08deca0-8a1c-539f-e120-37282219e246
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'gold dim_company'.company_key
+	toColumn: 'gold fact_risk_summary'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2e3b2079-8b9b-4a72-05ca-3344ea5e7dce
+	fromColumn: 'gold fact_risk_monthly'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+relationship 1d019919-d8e3-b935-d3a9-77f561ed11f3
+	fromColumn: 'gold fact_news_tickers'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship ab48a7bb-7e65-e664-c65a-73e50dcaa5cc
+	fromColumn: 'gold fact_events'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 816853fa-f7fa-b453-082c-ce9224744a64
+	fromColumn: 'gold fact_fundamentals'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship b95f6911-f8fa-ed8c-d96d-67564d02d5a4
+	fromColumn: 'gold fact_portfolio_weights'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5a2c95d8-7d2d-3fe8-d60b-fc6b923ec716
+	fromColumn: 'gold fact_correlation_pairs'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship e29553e7-aceb-e973-14b7-0db65c0be7ba
+	fromColumn: 'gold fact_correlation_pairs'.peer_company_key
+	toColumn: 'gold dim_company_peer'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2bcf9b23-cd3c-27f2-dc63-ea218adbb462
+	fromColumn: 'gold fact_market_daily'.date_key
+	toColumn: 'gold dim_date'.date_key
+
+relationship 16ed82ac-dda4-4621-272e-64c7ed8f5d60
+	fromColumn: 'gold fact_risk_monthly'.month_end_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship a01dcfa9-b14f-eb9c-a324-75e18f2ee052
+	fromColumn: 'gold fact_portfolio_daily'.date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship b91bc589-ac48-e4d9-3e22-450ffac49dfc
+	fromColumn: 'gold fact_correlation_pairs'.as_of_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 6ecb2ac4-2863-86ca-f33d-e21f4b602693
+	fromColumn: 'gold fact_news_tickers'.reaction_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship ec13002c-ef86-7f05-b07c-68eec9a631e2
+	fromColumn: 'gold fact_events'.reaction_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 04fe7c56-c417-9445-d74d-f5c08294a0e5
+	fromColumn: 'gold fact_fundamentals'.period_end_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship de9a6573-e141-7464-98c1-3821101176ff
+	isActive: false
+	fromColumn: 'gold fact_news_tickers'.published_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 0fda6079-9cd7-b518-0e00-93b5de1965e0
+	isActive: false
+	fromColumn: 'gold fact_events'.event_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 8c4c4e51-f38c-7518-f328-9295b275b9f6
+	isActive: false
+	fromColumn: 'gold fact_fundamentals'.filing_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 645e6f51-154a-887d-a01f-dd4d6eeeafb2
+	fromColumn: 'gold fact_portfolio_weights'.portfolio_id
+	toColumn: 'gold dim_portfolio'.portfolio_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship ddf54970-3690-e5b4-c1d7-f515fce5dde7
+	fromColumn: 'gold fact_portfolio_daily'.portfolio_id
+	toColumn: 'gold dim_portfolio'.portfolio_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 25443cf6-561c-bcef-1bc8-3c530d0280dc
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'gold dim_portfolio'.portfolio_id
+	toColumn: 'gold fact_portfolio_metrics'.portfolio_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship aa4a5ca9-cd1a-38d8-ba71-adc307c5ce74
+	fromColumn: 'gold fact_news_tickers'.article_id
+	toColumn: 'gold fact_article_sentiment'.article_id
+

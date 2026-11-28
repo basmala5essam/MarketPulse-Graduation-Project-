@@ -1,0 +1,126 @@
+table 'gold fact_event_study'
+	lineageTag: 24bec18e-b9da-42f1-9648-83af7c8eb323
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ceb401a-d946-4a5f-ab35-878267d67ca4
+		summarizeBy: sum
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column reaction_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c0561ad-36d8-47ad-add8-bc14ade9157d
+		summarizeBy: sum
+		sourceColumn: reaction_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ce83c618-6cb1-4176-8ee4-0b65ee534374
+		summarizeBy: sum
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		lineageTag: 365829be-bf1a-4e32-b0cc-d36d17f67496
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_m1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e8adfc0f-8bf5-4026-86a9-428138f66069
+		summarizeBy: sum
+		sourceColumn: ret_m1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_d0
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 39390277-96fc-4804-bab7-55c1c98d6875
+		summarizeBy: sum
+		sourceColumn: ret_d0
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_p1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2123950b-a4bd-4758-aed2-2cb127c1b998
+		summarizeBy: sum
+		sourceColumn: ret_p1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_p2
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 64fc40b8-12ab-40dc-beeb-706c92c1f0e0
+		summarizeBy: sum
+		sourceColumn: ret_p2
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume_ratio_d0
+		dataType: double
+		lineageTag: fe07fc89-dd26-414d-bd85-bc61608b194b
+		summarizeBy: sum
+		sourceColumn: volume_ratio_d0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column surprise_pct
+		dataType: double
+		lineageTag: ec393a50-5d89-4e5b-8d75-fd2dfe8e3ada
+		summarizeBy: sum
+		sourceColumn: surprise_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column abn_d0
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 437ff18a-63c9-4427-a0a0-a0a6262b59ed
+		summarizeBy: sum
+		sourceColumn: abn_d0
+
+		annotation SummarizationSetBy = Automatic
+
+	column car_m1_p1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 35eb6a3c-4c0b-425f-ab04-6d167d27d9dc
+		summarizeBy: sum
+		sourceColumn: car_m1_p1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_event_study' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_event_study = Source{[Schema="gold",Item="fact_event_study"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_event_study,{"gold.dim_company", "gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

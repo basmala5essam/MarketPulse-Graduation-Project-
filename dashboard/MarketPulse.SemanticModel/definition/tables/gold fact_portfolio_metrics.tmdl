@@ -1,0 +1,72 @@
+table 'gold fact_portfolio_metrics'
+	lineageTag: fde227b1-c3b3-4f7e-ac2b-18dd1851bd36
+
+	column portfolio_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 74dda395-48cf-4824-976f-76d0ce02e51c
+		summarizeBy: none
+		sourceColumn: portfolio_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ann_return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d1d8880c-6376-4128-bb60-18d7d8bf51f5
+		summarizeBy: sum
+		sourceColumn: ann_return
+
+		annotation SummarizationSetBy = Automatic
+
+	column ann_vol
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 160d7db4-7d8b-425f-81e5-1e19ad92bbab
+		summarizeBy: sum
+		sourceColumn: ann_vol
+
+		annotation SummarizationSetBy = Automatic
+
+	column sharpe
+		dataType: double
+		lineageTag: d27a6d3c-07a0-4e00-b2b8-6ccbab909873
+		summarizeBy: sum
+		sourceColumn: sharpe
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_drawdown
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ba231e28-3977-4466-8ed9-026339ecbda9
+		summarizeBy: sum
+		sourceColumn: max_drawdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_95_hist
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 27d76d40-582c-426c-8e92-aefbbd5858df
+		summarizeBy: sum
+		sourceColumn: var_95_hist
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_portfolio_metrics' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_portfolio_metrics = Source{[Schema="gold",Item="fact_portfolio_metrics"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_portfolio_metrics,{"gold.dim_portfolio"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

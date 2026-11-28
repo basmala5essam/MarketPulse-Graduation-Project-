@@ -1,0 +1,122 @@
+table 'gold fact_fundamentals'
+	lineageTag: 1c99f2ce-e394-4374-a495-84e6c542800e
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: bf02562a-6a11-4b6e-84d4-3bf93e70560f
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_end_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 9246dd55-245e-46b1-af39-17320a266460
+		summarizeBy: none
+		sourceColumn: period_end_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 401a72a5-1741-475c-b639-39248b00c13d
+		summarizeBy: sum
+		sourceColumn: filing_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 016e7c9b-a402-4f93-90cf-26718e4d5b01
+		summarizeBy: none
+		sourceColumn: period_end
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column filing_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8ecd0c9a-a72a-4b43-b03c-a0e34e2afb70
+		summarizeBy: none
+		sourceColumn: filing_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column revenue
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8c838df2-6056-4088-8406-c1f010cbd0aa
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_income
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8503438f-2a0f-4e35-9771-c1198cb21e1e
+		summarizeBy: sum
+		sourceColumn: net_income
+
+		annotation SummarizationSetBy = Automatic
+
+	column eps_diluted
+		dataType: double
+		lineageTag: 0cb04522-f545-4b6f-b876-cbc62ecf81dc
+		summarizeBy: sum
+		sourceColumn: eps_diluted
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_assets
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 650b2f43-286e-41f2-96e9-4a90eba4e435
+		summarizeBy: sum
+		sourceColumn: total_assets
+
+		annotation SummarizationSetBy = Automatic
+
+	column equity
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 3ac19ed8-1e8f-4876-aedd-58d161c654b2
+		summarizeBy: sum
+		sourceColumn: equity
+
+		annotation SummarizationSetBy = Automatic
+
+	column profit_margin
+		dataType: double
+		lineageTag: 14bfbc15-4638-4615-9f0f-6db0a1492048
+		summarizeBy: sum
+		sourceColumn: profit_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'gold fact_fundamentals' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_fundamentals = Source{[Schema="gold",Item="fact_fundamentals"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_fundamentals,{"gold.dim_company", "gold.dim_date(filing_date_key)", "gold.dim_date(period_end_date_key)"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

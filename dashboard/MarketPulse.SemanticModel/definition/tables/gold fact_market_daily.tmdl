@@ -1,0 +1,224 @@
+table 'gold fact_market_daily'
+	lineageTag: 0d8ec355-e884-477f-869b-affa9a725f7a
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 79a04ebb-e9c1-4fc9-8db7-248442f9a224
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 96cf1623-4f1c-4448-9738-f84baa6905dc
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column open
+		dataType: double
+		lineageTag: 11bfb6f6-124d-4509-9aea-429c04067ddd
+		summarizeBy: sum
+		sourceColumn: open
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high
+		dataType: double
+		lineageTag: 41da4bfb-892b-4e49-ae05-249b14a1ab29
+		summarizeBy: sum
+		sourceColumn: high
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low
+		dataType: double
+		lineageTag: 90b5ef65-3ca4-46ee-b130-ebd4326ccba5
+		summarizeBy: sum
+		sourceColumn: low
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column close
+		dataType: double
+		lineageTag: 1712a186-79c4-4b64-a74c-54f69a7dbc06
+		summarizeBy: sum
+		sourceColumn: close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume
+		dataType: int64
+		formatString: 0
+		lineageTag: c8e4253c-8055-4bb9-81d0-f02e4b364ff8
+		summarizeBy: sum
+		sourceColumn: volume
+
+		annotation SummarizationSetBy = Automatic
+
+	column return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7648f61d-c299-4bba-bfb5-0c3fc8f514ad
+		summarizeBy: sum
+		sourceColumn: return
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 806baa86-3954-4fe7-9c9d-04b3a320e5ed
+		summarizeBy: sum
+		sourceColumn: cumulative_return
+
+		annotation SummarizationSetBy = Automatic
+
+	column ma20
+		dataType: double
+		lineageTag: 120bd88b-0d7e-47eb-a768-1500b9b8c69a
+		summarizeBy: sum
+		sourceColumn: ma20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ma50
+		dataType: double
+		lineageTag: 4c79849b-b6d8-4d24-b3d3-11e212f7e70d
+		summarizeBy: sum
+		sourceColumn: ma50
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ma200
+		dataType: double
+		lineageTag: 160706b8-e54f-482a-b425-2da9eb652508
+		summarizeBy: sum
+		sourceColumn: ma200
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rolling_volatility
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f8b2bc43-613e-424b-9812-2d499a2083a1
+		summarizeBy: sum
+		sourceColumn: rolling_volatility
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume_change
+		dataType: double
+		lineageTag: b415b94d-5f0d-4e75-9855-7915f4c4b23d
+		summarizeBy: sum
+		sourceColumn: volume_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_ma20
+		dataType: double
+		lineageTag: 886374ec-ca95-4b43-adb8-4cffb6f8d6ab
+		summarizeBy: sum
+		sourceColumn: volume_ma20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vol_20d_ann
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 900f2173-59ca-4781-b89f-376ee0df7f03
+		summarizeBy: sum
+		sourceColumn: vol_20d_ann
+
+		annotation SummarizationSetBy = Automatic
+
+	column vol_63d_ann
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3df0abda-0320-44f7-9f60-191b2fa31dc7
+		summarizeBy: sum
+		sourceColumn: vol_63d_ann
+
+		annotation SummarizationSetBy = Automatic
+
+	column running_peak
+		dataType: double
+		lineageTag: 8ea2357d-3668-4681-9155-03b7719fa668
+		summarizeBy: sum
+		sourceColumn: running_peak
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column drawdown
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d54d398f-26a4-4ebf-a24d-da997ec94999
+		summarizeBy: sum
+		sourceColumn: drawdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column benchmark_symbol
+		dataType: string
+		lineageTag: d051c900-9690-421e-98f1-59944f223ba1
+		summarizeBy: none
+		sourceColumn: benchmark_symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column benchmark_close
+		dataType: double
+		lineageTag: 556cc8b1-ad33-4798-9a38-fff574550757
+		summarizeBy: sum
+		sourceColumn: benchmark_close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column benchmark_return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 08e8c1e7-dd0e-4930-af85-3f4386dbed4a
+		summarizeBy: sum
+		sourceColumn: benchmark_return
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_market_daily' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_market_daily = Source{[Schema="gold",Item="fact_market_daily"]}[Data]
+				in
+				    gold_fact_market_daily
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

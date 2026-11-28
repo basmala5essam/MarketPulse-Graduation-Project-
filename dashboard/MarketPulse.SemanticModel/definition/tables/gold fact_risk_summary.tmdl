@@ -1,0 +1,109 @@
+table 'gold fact_risk_summary'
+	lineageTag: a42ac081-aba7-4267-91a6-93bca68bd0ab
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ddf4cda-85a9-4496-a049-1bb714d02d45
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column daily_volatility
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b6a2c785-ca6f-4f68-a3fa-c9eb7a83b14c
+		summarizeBy: sum
+		sourceColumn: daily_volatility
+
+		annotation SummarizationSetBy = Automatic
+
+	column annualized_volatility
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1edbfa78-a193-480f-ab94-e6637a06479f
+		summarizeBy: sum
+		sourceColumn: annualized_volatility
+
+		annotation SummarizationSetBy = Automatic
+
+	column beta
+		dataType: double
+		lineageTag: e3f5d1fb-9eea-4d11-ba7c-ad896727a392
+		summarizeBy: sum
+		sourceColumn: beta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_drawdown
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7704f4aa-3d62-4bb5-a983-8a5b3872b32f
+		summarizeBy: sum
+		sourceColumn: max_drawdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column sharpe_ratio
+		dataType: double
+		lineageTag: b3a73d99-0326-43be-b074-ecd054e34754
+		summarizeBy: sum
+		sourceColumn: sharpe_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column var_95_hist
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 12fcbeb8-249b-44a2-957a-8481818a3db3
+		summarizeBy: sum
+		sourceColumn: var_95_hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_95_param
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8230c0a5-b79c-48bf-9820-c76959d0aedb
+		summarizeBy: sum
+		sourceColumn: var_95_param
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_99_hist
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b525e5f7-06cf-4be6-ae1f-dd9d33b6681d
+		summarizeBy: sum
+		sourceColumn: var_99_hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_99_param
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1e659cb6-8e03-4cc5-8e75-f2251e218966
+		summarizeBy: sum
+		sourceColumn: var_99_param
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_risk_summary' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_risk_summary = Source{[Schema="gold",Item="fact_risk_summary"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_risk_summary,{"gold.dim_company"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,111 @@
+table 'gold fact_news_tickers'
+	lineageTag: 0a51ce50-5f2a-45e4-9fd3-97f9ee289958
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: f9ff0708-74c0-4fa1-b16e-f8e4b6269fe7
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column published_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d3f1e346-5342-4030-893a-cbaba86e06ae
+		summarizeBy: sum
+		sourceColumn: published_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column reaction_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a7ca840-64bb-45f4-a747-614a1bba9bc1
+		summarizeBy: none
+		sourceColumn: reaction_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column article_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 62595dc0-68c8-4a05-b3d3-0cf553579c31
+		summarizeBy: none
+		sourceColumn: article_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column published_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6ae79835-03af-4d31-9100-36a843fc2f48
+		summarizeBy: none
+		sourceColumn: published_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_symbols_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f90761e-9771-44fa-ba71-e5933150edc1
+		summarizeBy: sum
+		sourceColumn: n_symbols_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_project_tickers
+		dataType: int64
+		formatString: 0
+		lineageTag: de64abd7-7bb4-42e7-89a2-4d9d7d769188
+		summarizeBy: sum
+		sourceColumn: n_project_tickers
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_focused
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6c47b28b-8f6b-45c5-9d88-6c34e5945b86
+		summarizeBy: none
+		sourceColumn: is_focused
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_reaction_day
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 06a5deb6-d94c-4b54-a97b-cd7541f21c78
+		summarizeBy: sum
+		sourceColumn: ret_reaction_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_next_day
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b79ea383-dcec-41f3-aa0c-52d0bb28642f
+		summarizeBy: sum
+		sourceColumn: ret_next_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_news_tickers' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_news_tickers = Source{[Schema="gold",Item="fact_news_tickers"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_news_tickers,{"gold.dim_company", "gold.dim_date(published_date_key)", "gold.dim_date(reaction_date_key)"}),
+				    Focused  = Table.AddColumn(#"Removed Columns" ,"is_focused", each [n_symbols_total] <= 3, type logical),
+				    Joined   = Table.NestedJoin(Focused, {"company_key", "reaction_date_key"},
+				                                #"gold fact_market_prices", {"company_key", "date_key"}, "px", JoinKind.LeftOuter),
+				    Expanded = Table.ExpandTableColumn(Joined, "px", {"return", "next_day_return"}, {"ret_reaction_day", "ret_next_day"})
+				in
+				    Expanded
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

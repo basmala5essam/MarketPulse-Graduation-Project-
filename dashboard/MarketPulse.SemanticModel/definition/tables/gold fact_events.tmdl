@@ -1,0 +1,202 @@
+table 'gold fact_events'
+	lineageTag: e4db76e1-7efa-4206-b820-c0a2b40e0941
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 8735d4bb-5976-46b1-9608-28ad152e7764
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 319613d6-a4b1-427e-90a7-d07b07ceb2d7
+		summarizeBy: sum
+		sourceColumn: event_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column reaction_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 574628da-d2f7-4bf5-bfdf-271e0951d3ff
+		summarizeBy: none
+		sourceColumn: reaction_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 73faa8b6-5601-4e78-a0c4-0455701fdc90
+		summarizeBy: sum
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		lineageTag: 7c926ba0-d180-4b9e-8f09-db95ec1ec9c5
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column after_close
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5e4b1865-989b-4cb0-a963-fd6f5f0e5abb
+		summarizeBy: none
+		sourceColumn: after_close
+
+		annotation SummarizationSetBy = Automatic
+
+	column eps_estimate
+		dataType: double
+		lineageTag: 20a29bd3-aab6-46d1-9916-3eaeaf78e789
+		summarizeBy: sum
+		sourceColumn: eps_estimate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column eps_actual
+		dataType: double
+		lineageTag: b66317be-ace0-44b9-b8f8-832591e42182
+		summarizeBy: sum
+		sourceColumn: eps_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column surprise_pct
+		dataType: double
+		lineageTag: 93faef4d-50e5-4fbc-adee-034c7d5f3644
+		summarizeBy: sum
+		sourceColumn: surprise_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column items
+		dataType: string
+		lineageTag: 5b141351-570c-4d2e-b395-8b7be282146e
+		summarizeBy: none
+		sourceColumn: items
+
+		annotation SummarizationSetBy = Automatic
+
+	column items_description
+		dataType: string
+		lineageTag: eb510d4b-fe08-49b2-af7c-927eb68d029c
+		summarizeBy: none
+		sourceColumn: items_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column accession_number
+		dataType: string
+		lineageTag: 5c191da3-ea6f-41be-b270-73f37a8c4446
+		summarizeBy: none
+		sourceColumn: accession_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_m1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c57b1a65-ac38-4e07-9625-06178f2d9b1d
+		summarizeBy: sum
+		sourceColumn: ret_m1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_d0
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 42d7ecf5-02d6-40fa-94da-607604028b13
+		summarizeBy: sum
+		sourceColumn: ret_d0
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_p1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 523a232e-c940-4a6d-9b87-cee7cc0eedfd
+		summarizeBy: sum
+		sourceColumn: ret_p1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret_p2
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1141871a-0a30-4470-aa5d-8f31482138d1
+		summarizeBy: sum
+		sourceColumn: ret_p2
+
+		annotation SummarizationSetBy = Automatic
+
+	column abn_d0
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b65a7dbf-48d3-43d7-8c62-257f0ca36052
+		summarizeBy: sum
+		sourceColumn: abn_d0
+
+		annotation SummarizationSetBy = Automatic
+
+	column car_m1_p1
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: de63c271-a0f0-4d52-85d1-c50e858cf5f9
+		summarizeBy: sum
+		sourceColumn: car_m1_p1
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume_ratio_d0
+		dataType: double
+		lineageTag: d6a3ab65-d251-4501-9f2d-8cdadcf10d82
+		summarizeBy: sum
+		sourceColumn: volume_ratio_d0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_earnings_duplicate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 757704c2-daaa-4d24-8c99-88b2fdf07792
+		summarizeBy: none
+		sourceColumn: is_earnings_duplicate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_events' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_events = Source{[Schema="gold",Item="fact_events"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_events,{"gold.dim_company", "gold.dim_date(event_date_key)", "gold.dim_date(reaction_date_key)"}),
+				    Joined  = Table.NestedJoin(#"Removed Columns", {"event_id"}, #"gold fact_event_study", {"event_id"}, "es", JoinKind.LeftOuter),
+				    Expand  = Table.ExpandTableColumn(Joined, "es",
+				                {"ret_m1", "ret_d0", "ret_p1", "ret_p2", "abn_d0", "car_m1_p1", "volume_ratio_d0"}),
+				    Flag    = Table.AddColumn(Expand, "is_earnings_duplicate",
+				                each [event_type] = "8-K" and [items] <> null and Text.Contains([items], "2.02"), type logical)
+				in
+				    Flag
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

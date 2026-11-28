@@ -1,0 +1,133 @@
+table 'gold fact_article_sentiment'
+	lineageTag: 92f5493b-2814-461b-86f4-398e6cab9a45
+
+	column article_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 193da84b-79db-4443-9184-0018fe664829
+		summarizeBy: none
+		sourceColumn: article_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column published_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 48b6569a-4437-4614-8340-bd792f2c64fd
+		summarizeBy: none
+		sourceColumn: published_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b8e78a73-4a62-4424-ad33-b02eb8c5fad0
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: a622c44f-a51c-4d2a-98ce-f9e1752c64de
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column author
+		dataType: string
+		lineageTag: c29719f7-32de-4fba-aff4-f852fd701470
+		summarizeBy: none
+		sourceColumn: author
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 92ae3c6d-db7b-468e-8a13-4455d2992900
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: f65c0717-f917-4ec1-b8d6-07beb60a6745
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbols
+		dataType: string
+		lineageTag: b4b53fd3-91ab-47d7-a62b-c6963641d256
+		summarizeBy: none
+		sourceColumn: symbols
+
+		annotation SummarizationSetBy = Automatic
+
+	column finbert_label
+		dataType: string
+		lineageTag: c03bbb78-c109-4712-9d9c-5cf28f1f68ff
+		summarizeBy: none
+		sourceColumn: finbert_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column finbert_positive
+		dataType: double
+		lineageTag: b7a3c11c-d9bc-4173-b41e-1a884c013bf0
+		summarizeBy: none
+		sourceColumn: finbert_positive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column finbert_negative
+		dataType: double
+		lineageTag: 286b6d92-2317-495e-a58c-55d01aef1a08
+		summarizeBy: none
+		sourceColumn: finbert_negative
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column finbert_neutral
+		dataType: double
+		lineageTag: 59bf62d9-a1b2-4b77-8ee5-fca324ced69a
+		summarizeBy: none
+		sourceColumn: finbert_neutral
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column finbert_score
+		dataType: double
+		lineageTag: 69d26f6c-0438-477d-b0f8-2ec7f4c1f58d
+		summarizeBy: none
+		sourceColumn: finbert_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'gold fact_article_sentiment' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_article_sentiment = Source{[Schema="gold",Item="fact_article_sentiment"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_article_sentiment,{"published_date_key", "gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,82 @@
+table 'gold fact_risk_monthly'
+	lineageTag: 9e218709-e126-466c-904a-34d1af144436
+
+	column month_end_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fd45919-3fb3-451c-b384-9177d69050b6
+		summarizeBy: none
+		sourceColumn: month_end_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 80b4eeb2-f98f-48c6-aa85-fedea41e48a2
+		summarizeBy: none
+		sourceColumn: month_end
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column monthly_return
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cbc4057d-a4e9-45ff-a6b7-0dea1927f7fc
+		summarizeBy: sum
+		sourceColumn: monthly_return
+
+		annotation SummarizationSetBy = Automatic
+
+	column vol_20d_ann
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 81bd0d9c-e76d-429a-86da-4dcef9fe085f
+		summarizeBy: sum
+		sourceColumn: vol_20d_ann
+
+		annotation SummarizationSetBy = Automatic
+
+	column drawdown_eom
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f26d46be-260d-470e-b793-567f9298be65
+		summarizeBy: sum
+		sourceColumn: drawdown_eom
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_drawdown_in_month
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3e6595aa-0aef-4eb6-9d37-0b764754b9d8
+		summarizeBy: sum
+		sourceColumn: max_drawdown_in_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 31ae2328-89f8-4870-b1f0-1fc8d0c52864
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_risk_monthly' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_fact_risk_monthly = Source{[Schema="gold",Item="fact_risk_monthly"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_fact_risk_monthly,{"gold.dim_company", "gold.dim_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

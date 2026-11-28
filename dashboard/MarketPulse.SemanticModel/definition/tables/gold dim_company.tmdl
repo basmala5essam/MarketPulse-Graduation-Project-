@@ -1,0 +1,75 @@
+table 'gold dim_company'
+	lineageTag: e66be76f-a6bf-49c8-bd7c-b16cf8e9b429
+
+	column company_key
+		dataType: int64
+		formatString: 0
+		lineageTag: b48c33d2-9ce7-477c-af6f-01e6e22fbb31
+		summarizeBy: none
+		sourceColumn: company_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker
+		dataType: string
+		lineageTag: 3b3bd086-7db8-4b3c-8bb2-1e4ac2629b97
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 06a99f1b-2858-4e4c-89ab-5bf3e5d9e790
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 98552077-241e-473f-b63f-655a8e41dda9
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry
+		dataType: string
+		lineageTag: ada3d9c5-73ce-4eeb-bd88-948bc8d21183
+		summarizeBy: none
+		sourceColumn: industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: e5d1b8f0-b35b-47e5-bfc5-0981b21e1c9b
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cik
+		dataType: int64
+		formatString: 0
+		lineageTag: eec1ddfd-c5cb-4b3a-9a28-1b9daff11122
+		summarizeBy: sum
+		sourceColumn: cik
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_company' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("196.221.145.204,1433", "MarketPulseDW"),
+				    gold_dim_company = Source{[Schema="gold",Item="dim_company"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(gold_dim_company,{"gold.fact_correlation_pairs(company_key)", "gold.fact_correlation_pairs(company_key) 2", "gold.fact_event_study", "gold.fact_events", "gold.fact_fundamentals", "gold.fact_market_features", "gold.fact_market_prices", "gold.fact_news_tickers", "gold.fact_portfolio_weights", "gold.fact_risk_daily", "gold.fact_risk_monthly", "gold.fact_risk_summary"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
