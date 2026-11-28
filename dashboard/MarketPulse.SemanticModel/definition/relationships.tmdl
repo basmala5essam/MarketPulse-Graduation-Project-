@@ -135,3 +135,15 @@ relationship aa4a5ca9-cd1a-38d8-ba71-adc307c5ce74
 	fromColumn: 'gold fact_news_tickers'.article_id
 	toColumn: 'gold fact_article_sentiment'.article_id
 
+relationship b38ecfb0-ec2c-c418-1a8d-bba177056ba5
+	fromColumn: 'gold fact_market_prices'.company_key
+	toColumn: 'gold dim_company'.company_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship f3b04e6f-3662-ea05-e9b1-e124c07d8533
+	fromColumn: 'gold fact_market_prices'.date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+

@@ -5,7 +5,7 @@ table 'gold fact_market_prices'
 		dataType: int64
 		formatString: 0
 		lineageTag: 347ac9ed-6c19-4ad0-a775-67dfe272cf13
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: company_key
 
 		annotation SummarizationSetBy = Automatic
@@ -14,7 +14,7 @@ table 'gold fact_market_prices'
 		dataType: int64
 		formatString: 0
 		lineageTag: 7ae6b622-be1f-4322-8dbd-18bb19db33df
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic

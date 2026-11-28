@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 906.05656947870034,
-        "y": 0
+        "x": 1130.8653173638197,
+        "y": 1.6132173449796992
       },
       "nodes": [
         {
@@ -75,19 +75,6 @@
         },
         {
           "location": {
-            "x": 1589.8671286517076,
-            "y": 1291.4755214208114
-          },
-          "nodeIndex": "gold fact_benchmark_prices",
-          "nodeLineageTag": "0e214065-b87d-4110-a96b-664aacd268c7",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 5
-        },
-        {
-          "location": {
             "x": 341.14327441750214,
             "y": 289.98657944060756
           },
@@ -153,21 +140,8 @@
         },
         {
           "location": {
-            "x": 1284.1896275129816,
-            "y": 1289.7323665820336
-          },
-          "nodeIndex": "gold fact_market_features",
-          "nodeLineageTag": "657eb54b-4160-4e78-b5f5-913a7051b6d2",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 11
-        },
-        {
-          "location": {
-            "x": 600.13311008990058,
-            "y": 578.32488480520533
+            "x": 574.78501464576755,
+            "y": 677.18245703732453
           },
           "nodeIndex": "gold fact_market_prices",
           "nodeLineageTag": "92206fbf-dd97-4f49-9c59-cee7bdc4edc9",
@@ -231,19 +205,6 @@
         },
         {
           "location": {
-            "x": 1004.0885217119599,
-            "y": 1323.2949292685887
-          },
-          "nodeIndex": "gold fact_risk_daily",
-          "nodeLineageTag": "05bbe2fd-8fbe-4d68-b1be-1ee54d5d6736",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 16
-        },
-        {
-          "location": {
             "x": 1302.0499410927744,
             "y": 488.610393276025
           },
@@ -294,7 +255,463 @@
         }
       ],
       "name": "All tables",
-      "zoomValue": 50.34689210282319,
+      "zoomValue": 49.59034282705386,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 35.200000762939453
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 334.1847511806298,
+            "y": -33.065109177342435
+          },
+          "nodeIndex": "gold fact_market_daily",
+          "nodeLineageTag": "0d8ec355-e884-477f-869b-affa9a725f7a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 675.36163941535983,
+            "y": 27.259883455092449
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 320.20000076293945,
+            "y": 484
+          },
+          "nodeIndex": "gold fact_market_prices",
+          "nodeLineageTag": "92206fbf-dd97-4f49-9c59-cee7bdc4edc9",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact Market Daily",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 704.23163645746092,
+            "y": 484.56214509400758
+          },
+          "nodeIndex": "gold fact_article_sentiment",
+          "nodeLineageTag": "92f5493b-2814-461b-86f4-398e6cab9a45",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 129.65722870326184,
+            "y": 478.74138719231735
+          },
+          "nodeIndex": "gold fact_news_tickers",
+          "nodeLineageTag": "0a51ce50-5f2a-45e4-9fd3-97f9ee289958",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 610.34263696921482,
+            "y": 37.922427565250466
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 61.060708039864721,
+            "y": 45.552475744594233
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact News",
+      "zoomValue": 63.287087723234173,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 334.15897794397154,
+            "y": -50
+          },
+          "nodeIndex": "gold fact_events",
+          "nodeLineageTag": "e4db76e1-7efa-4206-b820-c0a2b40e0941",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.33872881501793,
+            "y": -39.976129573059382
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -43.860525706164481
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact Events",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 24.799999237060547
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 395.1847511806298,
+            "y": 0
+          },
+          "nodeIndex": "gold fact_portfolio_daily",
+          "nodeLineageTag": "9268fd69-15a1-431d-b335-007310027391",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 697.36163941535983,
+            "y": 0
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 1.7401165449069822
+          },
+          "nodeIndex": "gold dim_portfolio",
+          "nodeLineageTag": "4928f094-ef90-48da-9b10-52d71d4b90e2",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 322
+          },
+          "nodeIndex": "gold fact_portfolio_metrics",
+          "nodeLineageTag": "fde227b1-c3b3-4f7e-ac2b-18dd1851bd36",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 416.20000076293945,
+            "y": 300.60000610351563
+          },
+          "nodeIndex": "gold fact_portfolio_weights",
+          "nodeLineageTag": "017e5eda-154c-4b92-a082-a30fe11d5b35",
+          "size": {
+            "height": 161,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact Portfolio",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 222.39999389648438,
+        "y": 92
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 324.17941566988611,
+            "y": 353.76878482934637
+          },
+          "nodeIndex": "gold fact_risk_monthly",
+          "nodeLineageTag": "9e218709-e126-466c-904a-34d1af144436",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 886.17687182520331,
+            "y": 357
+          },
+          "nodeIndex": "gold fact_risk_summary",
+          "nodeLineageTag": "a42ac081-aba7-4267-91a6-93bca68bd0ab",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 622.3764552003704,
+            "y": 13.871234307153031
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 110.40000152587891,
+            "y": 0
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "Fact Risk",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 6,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 390.15897794397154,
+            "y": 8
+          },
+          "nodeIndex": "gold fact_fundamentals",
+          "nodeLineageTag": "1c99f2ce-e394-4374-a495-84e6c542800e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 723.33872881501793,
+            "y": 8
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -43.860525706164481
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact Fundementals",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 7,
+      "scrollPosition": {
+        "x": 0,
+        "y": 130.39999389648438
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 349.41858564513313,
+            "y": 348.06564564830774
+          },
+          "nodeIndex": "gold fact_correlation_pairs",
+          "nodeLineageTag": "bbd65b02-4e78-4dff-8376-0e52fa4ce520",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 192.36733112385144,
+            "y": 624.69825021619909
+          },
+          "nodeIndex": "gold dim_company",
+          "nodeLineageTag": "e66be76f-a6bf-49c8-bd7c-b16cf8e9b429",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 351.7032101674468,
+            "y": -50
+          },
+          "nodeIndex": "gold dim_company_peer",
+          "nodeLineageTag": "4aba5255-e7ad-494d-b0b9-f314509939ea",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 272.54311002391182
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "5d6d089b-0ae8-4afa-9f6b-d3e25b776644",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Fact Correlation",
+      "zoomValue": 100,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
